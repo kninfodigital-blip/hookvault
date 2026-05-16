@@ -204,15 +204,55 @@
               </div>
             </div>
           </div>
-          <!-- Columna derecha: info del producto (sticky como en QP) -->
+          <!-- Columna derecha: info del producto + checkout (como QP product page) -->
           <div class="product-detail__info animate-item" style="--index:1">
             <span class="product-detail__tag">PRODUCTO DIGITAL</span>
-            <h2 class="product-detail__title">Hook Vault — 5000 Hooks</h2>
+            <h2 class="product-detail__title">Hook Vault — 5000 Hooks Virales</h2>
+
+            <!-- Rating stars (como QP) -->
+            <div class="rating-stars">
+              <div class="rating-stars__icons">
+                <svg class="star-icon" viewBox="0 0 576 512"><path fill="currentColor" d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg>
+                <svg class="star-icon" viewBox="0 0 576 512"><path fill="currentColor" d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg>
+                <svg class="star-icon" viewBox="0 0 576 512"><path fill="currentColor" d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg>
+                <svg class="star-icon" viewBox="0 0 576 512"><path fill="currentColor" d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg>
+                <svg class="star-icon" viewBox="0 0 576 512"><path fill="currentColor" d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg>
+              </div>
+              <span class="rating-stars__label">(Acceso inmediato tras el pago)</span>
+            </div>
+
+            <!-- Highlights (como QP) -->
+            <div class="qp-highlights">
+              <div class="qp-highlight">📩 Entrega instantánea al email</div>
+              <div class="qp-highlight">📁 5000 hooks organizados por nicho</div>
+              <div class="qp-highlight">🔍 Buscables dentro de Notion</div>
+              <div class="qp-highlight">🔄 100 hooks nuevos cada mes — gratis</div>
+            </div>
+
+            <!-- Precio + badge descuento -->
             <div class="product-detail__price-row">
               <span class="product-detail__price-old">47€</span>
               <span class="product-detail__price-now">17€</span>
-              <span class="product-detail__badge">-64%</span>
+              <span class="product-detail__badge">-64% OFF</span>
             </div>
+
+            <!-- Variant selector (estilo QP quantity-breaks) -->
+            <div class="variant-selector">
+              <label class="variant-option variant-option--selected">
+                <input type="radio" name="version" checked>
+                <div class="variant-option__content">
+                  <div class="variant-option__left">
+                    <span class="variant-option__name">Hook Vault — Acceso Completo</span>
+                    <span class="variant-option__benefit">64% OFF — OFERTA DE LANZAMIENTO</span>
+                  </div>
+                  <div class="variant-option__right">
+                    <span class="variant-option__price">17€</span>
+                  </div>
+                </div>
+                <span class="variant-option__badge">Pago único</span>
+              </label>
+            </div>
+
             <div class="product-detail__separator"></div>
 
             <!-- Terminal block (aparición 1) -->
@@ -233,8 +273,41 @@
               </div>
             </div>
 
-            <a href="https://buy.stripe.com/PLACEHOLDER" class="button button--primary button--full">DESCARGAR AHORA — 17€ →</a>
-            <p class="product-detail__micro">Acceso instantáneo · Pago único · Garantía 7 días</p>
+            <!-- Botón compra principal -->
+            <a href="https://buy.stripe.com/PLACEHOLDER" class="button button--primary button--full" id="mainAtcBtn">
+              <svg class="lock-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              COMPRAR AHORA — 17€ →
+            </a>
+
+            <!-- Trust badges bajo botón -->
+            <div class="trust-badges">
+              <div class="trust-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span>Pago seguro</span>
+              </div>
+              <div class="trust-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <span>Garantía 7 días</span>
+              </div>
+              <div class="trust-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <span>Entrega al email</span>
+              </div>
+            </div>
+
+            <!-- Métodos de pago (como QP footer payments) -->
+            <div class="checkout-payments">
+              <span class="checkout-payments__label">Pago procesado por Stripe</span>
+              <div class="checkout-payments__icons">
+                <span class="payment-icon">VISA</span>
+                <span class="payment-icon">MC</span>
+                <span class="payment-icon">AMEX</span>
+                <span class="payment-icon">APPLE PAY</span>
+                <span class="payment-icon">GOOGLE PAY</span>
+              </div>
+            </div>
+
+            <div class="product-detail__separator"></div>
 
             <!-- Acordeón estilo product tabs de QP -->
             <div class="product-accordion">
@@ -427,6 +500,17 @@
       </div>
     </div>
   </footer>
+
+  <!-- Sticky ATC bar mobile (como QP) -->
+  <div class="sticky-atc" id="stickyAtc">
+    <div class="sticky-atc__inner">
+      <div class="sticky-atc__info">
+        <span class="sticky-atc__title">Hook Vault</span>
+        <span class="sticky-atc__price"><s>47€</s> <strong>17€</strong></span>
+      </div>
+      <a href="https://buy.stripe.com/PLACEHOLDER" class="sticky-atc__btn">COMPRAR →</a>
+    </div>
+  </div>
 
   <script src="scripts.js" defer></script>
 </body>

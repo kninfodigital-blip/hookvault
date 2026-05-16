@@ -63,3 +63,20 @@ function closeDrawer() {
 if (menuToggle) menuToggle.addEventListener('click', openDrawer);
 if (drawerOverlay) drawerOverlay.addEventListener('click', closeDrawer);
 if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
+
+// 5. Sticky ATC bar (aparece cuando el botón principal sale del viewport)
+var stickyAtc = document.getElementById('stickyAtc');
+var mainAtcBtn = document.getElementById('mainAtcBtn');
+
+if (stickyAtc && mainAtcBtn && 'IntersectionObserver' in window) {
+  var stickyObs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        stickyAtc.classList.remove('is-visible');
+      } else {
+        stickyAtc.classList.add('is-visible');
+      }
+    });
+  }, { threshold: 0 });
+  stickyObs.observe(mainAtcBtn);
+}
