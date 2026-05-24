@@ -112,23 +112,43 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
 }
 
 /* ==========================================================================
-   TOP BAR — sutil, fija
+   TICKER MARQUEE
    ========================================================================== */
 
-.top-bar {
-  background: var(--bg-elevated);
-  border-bottom: 1px solid var(--border-subtle);
-  padding: 10px 16px;
-  text-align: center;
+.ticker {
+  background: var(--cyan);
+  color: var(--bg-base);
+  padding: 12px 0;
+  overflow: hidden;
+  white-space: nowrap;
   position: relative;
   z-index: 200;
 }
 
-.top-bar__text {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--text-muted);
-  letter-spacing: 0.04em;
+.ticker__track {
+  display: flex;
+  gap: 60px;
+  animation: ticker-scroll 30s linear infinite;
+  width: max-content;
+}
+
+.ticker__item {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+@keyframes ticker-scroll {
+  to { transform: translateX(-50%); }
+}
+
+@media (min-width: 750px) {
+  .ticker { padding: 14px 0; }
+  .ticker__item { font-size: 0.95rem; }
+  .ticker__track { gap: 100px; }
 }
 
 /* ==========================================================================
