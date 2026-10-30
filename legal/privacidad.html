@@ -3,97 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Política de Privacidad | Knowin</title>
+  <title>Política de Privacidad | Hook Vault</title>
   <meta name="robots" content="noindex">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📦</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='14' width='56' height='44' rx='4' fill='%23E2A63A'/%3E%3Crect x='10' y='6' width='26' height='12' rx='3' fill='%23E2A63A'/%3E%3Ctext x='32' y='46' font-family='Courier New,monospace' font-weight='700' font-size='24' text-anchor='middle' fill='%2316271F'%3EHV%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Zilla+Slab:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html { -webkit-text-size-adjust: 100%; }
     body {
-      font-family: 'Geist', system-ui, sans-serif;
-      font-size: 1rem;
-      line-height: 1.7;
-      color: rgba(245,239,227,0.9);
-      background: #05080F;
+      font-family: 'Zilla Slab', Georgia, serif;
+      font-size: 17px;
+      line-height: 1.65;
+      color: #3B4A42;
+      background: #F3EBDD;
       -webkit-font-smoothing: antialiased;
     }
-    a { color: #3FBEFF; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    a:focus-visible { outline: 2px solid #3FBEFF; outline-offset: 4px; }
-
-    .legal-header {
-      padding: 20px 24px;
-      border-bottom: 1px solid #1E2A40;
-    }
-    .legal-header__inner {
-      max-width: 760px;
-      margin: 0 auto;
-    }
-    .legal-header__logo {
-      font-family: 'Geist', system-ui, sans-serif;
-      font-size: 20px;
-      font-weight: 700;
-      color: #F4F1EA;
-      text-decoration: none;
-    }
-    .legal-header__logo .dot { color: #3FBEFF; }
-
-    .legal-container {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 64px 24px 80px;
-    }
-
-    h1 {
-      font-size: clamp(2rem, 5vw, 2.75rem);
-      font-weight: 800;
-      color: #F4F1EA;
-      margin-bottom: 8px;
-      letter-spacing: -0.02em;
-    }
-    .legal-date {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem;
-      color: #5C6679;
-      margin-bottom: 48px;
-      display: block;
-    }
-    h2 {
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: #F4F1EA;
-      margin-top: 48px;
-      margin-bottom: 16px;
-    }
-    p { margin-bottom: 16px; }
-    strong { color: #F4F1EA; }
-    ul, ol { margin-bottom: 16px; padding-left: 24px; }
-    li { margin-bottom: 8px; }
-
+    a { color: #16271F; text-decoration: underline; text-decoration-color: #E2A63A; text-underline-offset: 3px; }
+    a:hover { text-decoration-thickness: 2px; }
+    a:focus-visible { outline: 3px solid #E2A63A; outline-offset: 3px; }
+    .legal-header { padding: 16px; border-bottom: 1px solid #D8CBB4; }
+    .legal-header__inner { max-width: 760px; margin: 0 auto; }
+    .legal-header__logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font: 700 20px/1 'Zilla Slab', Georgia, serif; color: #16271F; }
+    .legal-header__logo .emblema { display: inline-grid; place-items: center; width: 32px; height: 22px; background: #E2A63A; border-radius: 4px 4px 2px 2px; font: 700 11px/1 'Courier Prime', 'Courier New', monospace; }
+    .legal-container { max-width: 760px; margin: 0 auto; padding: 48px 16px 72px; }
+    h1 { font-size: clamp(30px, 6vw, 42px); font-weight: 700; line-height: 1.15; color: #16271F; margin-bottom: 8px; }
+    .legal-date { font: 400 13px/1.4 'Courier Prime', 'Courier New', monospace; color: #6E7B72; margin-bottom: 40px; display: block; }
+    .legal-date strong { color: #6E7B72; }
+    h2 { font-size: 22px; font-weight: 700; line-height: 1.25; color: #16271F; margin-top: 40px; margin-bottom: 12px; }
+    p { margin-bottom: 14px; }
+    strong { color: #16271F; }
+    ul, ol { margin-bottom: 14px; padding-left: 24px; }
+    li { margin-bottom: 6px; }
     .back-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 48px;
-      padding: 12px 28px;
-      background: #0B1220;
-      border: 1px solid #1E2A40;
-      border-radius: 8px;
-      color: #3FBEFF;
-      font-weight: 600;
-      font-size: 0.9rem;
-      transition: background 200ms;
+      display: inline-flex; align-items: center; gap: 8px; margin-top: 40px; padding: 14px 24px;
+      background: #E2A63A; border-bottom: 2px solid #B9832A; border-radius: 6px;
+      color: #16271F; font-weight: 700; text-decoration: none;
     }
-    .back-btn:hover { background: #111B2E; text-decoration: none; }
+    .back-btn:hover { background: #B9832A; }
   </style>
 </head>
 <body>
   <header class="legal-header">
     <div class="legal-header__inner">
-      <a href="../index.html" class="legal-header__logo">knowin<span class="dot">.</span></a>
+      <a href="../index.html" class="legal-header__logo"><span class="emblema" translate="no" aria-hidden="true">HV</span><span translate="no">Hook Vault</span></a>
     </div>
   </header>
 
