@@ -1,10 +1,11 @@
 # Hook Vault — landing (knowinhook.com)
 
-Versión 3 (31-10-2026): rediseño con el método modelador-supremo, territorio «Fichero de recetas».
+Versión 4 (31-10-2026): estructura del método modelador-supremo con la imagen de Knowin (creativos azules: navy, cian, Montserrat + Inter + JetBrains Mono) y movimiento.
 
 - **Oferta:** `Cerebro productos digitales/Productos/HOOK VAULT/Hook Vault CORE OFFER.txt`
-- **Estilo:** `Cerebro productos digitales/Productos/HOOK VAULT/Hook Vault BRANDING.txt`
-- **Versión anterior:** `_archivo/2026-10-31-v1/` (no se publica: `.vercelignore`)
+- **Estilo:** sistema «V4 Fusión» de apknowin.com; la decisión está anotada al principio de `Hook Vault BRANDING.txt`.
+- **Versiones anteriores:** `_archivo/2026-10-31-v1/` (la publicada hasta hoy) y `_archivo/2026-10-31-v3-fichero/` (territorio «Fichero de recetas»). No se publican: `.vercelignore`.
+- **Tipografías:** `fonts/`, alojadas en la propia web, sin Google Fonts. Son las mismas que usa apknowin.com.
 
 ## Archivos
 

@@ -5,49 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Política de Privacidad | Hook Vault</title>
   <meta name="robots" content="noindex">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='14' width='56' height='44' rx='4' fill='%23E2A63A'/%3E%3Crect x='10' y='6' width='26' height='12' rx='3' fill='%23E2A63A'/%3E%3Ctext x='32' y='46' font-family='Courier New,monospace' font-weight='700' font-size='24' text-anchor='middle' fill='%2316271F'%3EHV%3C/text%3E%3C/svg%3E">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Zilla+Slab:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B1220'/%3E%3Ctext x='29' y='44' font-family='Arial,sans-serif' font-weight='800' font-size='34' text-anchor='middle' fill='%23F7FAFC'%3Eh%3C/text%3E%3Ccircle cx='47' cy='41' r='5' fill='%2319B8FF'/%3E%3C/svg%3E">
   <style>
+    @font-face { font-family: 'Inter'; font-style: normal; font-weight: 400 700; font-display: swap; src: url('../fonts/inter-var.woff2') format('woff2'); }
+    @font-face { font-family: 'Montserrat'; font-style: normal; font-weight: 700 800; font-display: swap; src: url('../fonts/montserrat-var.woff2') format('woff2'); }
+    @font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 400 700; font-display: swap; src: url('../fonts/jetbrains-mono.woff2') format('woff2'); }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { -webkit-text-size-adjust: 100%; }
-    body {
-      font-family: 'Zilla Slab', Georgia, serif;
-      font-size: 17px;
-      line-height: 1.65;
-      color: #3B4A42;
-      background: #F3EBDD;
-      -webkit-font-smoothing: antialiased;
-    }
-    a { color: #16271F; text-decoration: underline; text-decoration-color: #E2A63A; text-underline-offset: 3px; }
-    a:hover { text-decoration-thickness: 2px; }
-    a:focus-visible { outline: 3px solid #E2A63A; outline-offset: 3px; }
-    .legal-header { padding: 16px; border-bottom: 1px solid #D8CBB4; }
+    body { font: 400 16px/1.7 'Inter', system-ui, sans-serif; color: #C9D1DE; background: #0B1220; -webkit-font-smoothing: antialiased; }
+    a { color: #19B8FF; text-underline-offset: 3px; }
+    a:hover { color: #72D7FF; }
+    a:focus-visible { outline: 2px solid #19B8FF; outline-offset: 3px; }
+    .legal-header { padding: 14px 18px; border-bottom: 1px solid rgba(255,255,255,.08); background: rgba(11,18,32,.9); position: sticky; top: 0; }
     .legal-header__inner { max-width: 760px; margin: 0 auto; }
-    .legal-header__logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font: 700 20px/1 'Zilla Slab', Georgia, serif; color: #16271F; }
-    .legal-header__logo .emblema { display: inline-grid; place-items: center; width: 32px; height: 22px; background: #E2A63A; border-radius: 4px 4px 2px 2px; font: 700 11px/1 'Courier Prime', 'Courier New', monospace; }
-    .legal-container { max-width: 760px; margin: 0 auto; padding: 48px 16px 72px; }
-    h1 { font-size: clamp(30px, 6vw, 42px); font-weight: 700; line-height: 1.15; color: #16271F; margin-bottom: 8px; }
-    .legal-date { font: 400 13px/1.4 'Courier Prime', 'Courier New', monospace; color: #6E7B72; margin-bottom: 40px; display: block; }
-    .legal-date strong { color: #6E7B72; }
-    h2 { font-size: 22px; font-weight: 700; line-height: 1.25; color: #16271F; margin-top: 40px; margin-bottom: 12px; }
+    .legal-header__logo { font: 800 22px/1 'Montserrat', 'Arial Black', sans-serif; letter-spacing: -.045em; color: #F7FAFC; text-decoration: none; }
+    .legal-header__logo i { font-style: normal; color: #19B8FF; text-shadow: 0 0 24px rgba(25,184,255,.55); }
+    .legal-container { max-width: 760px; margin: 0 auto; padding: 48px 18px 72px; }
+    h1 { font: 800 clamp(30px, 6vw, 44px)/1.08 'Montserrat', 'Arial Black', sans-serif; letter-spacing: -.035em; color: #F7FAFC; margin-bottom: 10px; }
+    .legal-date { display: block; margin-bottom: 40px; font: 400 12px/1.4 'JetBrains Mono', Menlo, monospace; color: #8A95AB; text-transform: uppercase; letter-spacing: .06em; }
+    .legal-date strong { color: #19B8FF; }
+    h2 { font: 700 21px/1.25 'Montserrat', 'Arial Black', sans-serif; letter-spacing: -.02em; color: #F7FAFC; margin: 40px 0 12px; }
     p { margin-bottom: 14px; }
-    strong { color: #16271F; }
-    ul, ol { margin-bottom: 14px; padding-left: 24px; }
+    strong { color: #F7FAFC; }
+    ul, ol { margin-bottom: 14px; padding-left: 22px; }
     li { margin-bottom: 6px; }
-    .back-btn {
-      display: inline-flex; align-items: center; gap: 8px; margin-top: 40px; padding: 14px 24px;
-      background: #E2A63A; border-bottom: 2px solid #B9832A; border-radius: 6px;
-      color: #16271F; font-weight: 700; text-decoration: none;
-    }
-    .back-btn:hover { background: #B9832A; }
+    .back-btn { display: inline-flex; align-items: center; gap: 8px; margin-top: 40px; padding: 14px 24px; border-radius: 999px; background: #19B8FF; color: #0B1220; font-weight: 700; text-decoration: none; box-shadow: 0 12px 32px -12px rgba(25,184,255,.75); }
+    .back-btn:hover { background: #72D7FF; color: #0B1220; }
   </style>
 </head>
 <body>
   <header class="legal-header">
     <div class="legal-header__inner">
-      <a href="../index.html" class="legal-header__logo"><span class="emblema" translate="no" aria-hidden="true">HV</span><span translate="no">Hook Vault</span></a>
+      <a href="../index.html" class="legal-header__logo"><span translate="no">hookvault</span><i>.</i></a>
     </div>
   </header>
 

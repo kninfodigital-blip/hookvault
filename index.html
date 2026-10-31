@@ -8,11 +8,20 @@
   <meta property="og:title" content="Hook Vault · Graba tu próximo video en 15 minutos">
   <meta property="og:description" content="3 ganchos para tu negocio en 30 segundos, elegidos por lo que quieres conseguir hoy. 5,000 ganchos en español. Pago único.">
   <meta property="og:type" content="product">
-  <meta name="theme-color" content="#16271F">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='14' width='56' height='44' rx='4' fill='%23E2A63A'/%3E%3Crect x='10' y='6' width='26' height='12' rx='3' fill='%23E2A63A'/%3E%3Ctext x='32' y='46' font-family='Courier New,monospace' font-weight='700' font-size='24' text-anchor='middle' fill='%2316271F'%3EHV%3C/text%3E%3C/svg%3E">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Zilla+Slab:wght@400;500;700&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#0B1220">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B1220'/%3E%3Ctext x='29' y='44' font-family='Arial,sans-serif' font-weight='800' font-size='34' text-anchor='middle' fill='%23F7FAFC'%3Eh%3C/text%3E%3Ccircle cx='47' cy='41' r='5' fill='%2319B8FF'/%3E%3C/svg%3E">
+  <link rel="preload" href="fonts/montserrat-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
+  <style>
+    @font-face { font-family: 'Inter'; font-style: normal; font-weight: 400 700; font-display: swap; src: url('fonts/inter-var.woff2') format('woff2'); }
+    @font-face { font-family: 'Montserrat'; font-style: normal; font-weight: 700 800; font-display: swap; src: url('fonts/montserrat-var.woff2') format('woff2'); }
+    @font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 400 700; font-display: swap; src: url('fonts/jetbrains-mono.woff2') format('woff2'); }
+    @font-face { font-family: 'Inter Fallback'; font-weight: 400; src: local('Arial'), local('ArialMT'), local('Helvetica'); size-adjust: 107.1194%; ascent-override: 90.4365%; descent-override: 22.518%; line-gap-override: 0%; }
+    @font-face { font-family: 'Inter Fallback'; font-weight: 600; src: local('Arial Bold'), local('Arial-BoldMT'), local('Helvetica Bold'); size-adjust: 101.5259%; ascent-override: 95.419%; descent-override: 23.7586%; line-gap-override: 0%; }
+    @font-face { font-family: 'Montserrat Fallback'; font-weight: 800; src: local('Arial Bold'), local('Arial-BoldMT'), local('Helvetica Bold'); size-adjust: 112.5046%; ascent-override: 86.0409%; descent-override: 22.3102%; line-gap-override: 0%; }
+    @font-face { font-family: 'JetBrains Mono Fallback'; font-weight: 400 700; src: local('Menlo'), local('Consolas'), local('Courier New'); size-adjust: 99%; ascent-override: 102%; descent-override: 30%; line-gap-override: 0%; }
+  </style>
+  <script>document.documentElement.classList.add('js');</script>
   <link rel="stylesheet" href="styles.css">
   <script src="https://app.lemonsqueezy.com/js/lemon.js" defer></script>
   <script>window.lemonSqueezyAffiliateConfig = { store: "knowin" };</script>
@@ -36,75 +45,86 @@
   <!-- End Meta Pixel Code -->
 </head>
 <body>
-  <a class="skip-link" href="#inicio">Saltar al contenido</a>
+  <a class="saltar" href="#inicio">Saltar al contenido</a>
+  <div class="progreso" aria-hidden="true"></div>
 
-  <!-- ==== 0. Barra superior ==== -->
-  <div class="barra">
-    <p>Pago único <span aria-hidden="true">·</span> El Banco de ganchos te llega al momento <span aria-hidden="true">·</span> Regalos de lanzamiento hasta el 31 de diciembre</p>
-  </div>
-
-  <header class="cabecera">
-    <div class="contenedor cabecera__dentro">
-      <a href="#inicio" class="marca" aria-label="Hook Vault, ir al inicio">
-        <span class="marca__emblema" translate="no" aria-hidden="true">HV</span>
-        <span class="marca__nombre" translate="no">Hook Vault</span>
-      </a>
-      <a href="#oferta" class="cabecera__enlace">Ver precio</a>
-    </div>
+  <header class="nav">
+    <a href="#inicio" class="logo" aria-label="Hook Vault, ir al inicio"><span translate="no">hookvault</span><i>.</i></a>
+    <p class="nav__estado" translate="no"><i aria-hidden="true"></i>5,000 ganchos · en español</p>
+    <a href="#oferta" class="btn btn--fantasma btn--chico">Ver precio</a>
   </header>
 
   <main id="inicio">
 
     <!-- ==== 1. Hero ==== -->
-    <section class="seccion seccion--cartulina hero">
-      <div class="contenedor hero__rejilla">
+    <section class="hero">
+      <div class="hero__rejilla-fondo" aria-hidden="true"></div>
+      <div class="hero__brillo" aria-hidden="true"></div>
+      <canvas class="hero__malla" aria-hidden="true"></canvas>
+
+      <div class="contenedor hero__dentro">
         <div class="hero__texto">
-          <p class="etiqueta">Para dueños de negocio que graban con el celular</p>
-          <h1 class="hero__titulo">Graba tu próximo video en 15 minutos, con un gancho que frena el scroll — aunque no se te ocurra nada.</h1>
+          <p class="eyebrow"><i aria-hidden="true"></i>Para dueños de negocio que graban con el celular</p>
+          <h1 class="hero__titulo">Graba tu próximo video en <em>15 minutos</em>, con un gancho que <em>frena el scroll</em> — aunque no se te ocurra nada.</h1>
           <p class="hero__sub">Eliges qué quieres conseguir hoy y tienes 3 ganchos pensados para tu negocio en 30 segundos — sin tener que ser creativo, sin inventar frases desde cero, sin cursos de horas y sin pagar ninguna suscripción.</p>
-          <a href="#oferta" class="boton">Sí, quiero grabar mi próximo video hoy</a>
-          <p class="hero__micro">Pago único de <span translate="no">$19.99</span> · Funciona con Notion gratis, en el celular</p>
+          <div class="hero__acciones">
+            <a href="#oferta" class="btn btn--grande">Sí, quiero grabar mi próximo video hoy <span class="flecha" aria-hidden="true"></span></a>
+          </div>
+          <p class="hero__micro" translate="no"><span>Pago único de $19.99</span><span>Funciona con Notion gratis, en el celular</span></p>
         </div>
 
-        <div class="hero__fichas" aria-label="Tres ganchos de ejemplo, como salen del Selector">
-          <article class="ficha ficha--girada-1" style="--tinta: var(--vean)">
-            <span class="ficha__pestana">Que te vean</span>
-            <p class="ficha__negocio">Impuestos y contabilidad</p>
-            <p class="ficha__gancho">«Tu reembolso no es pequeño por mala suerte. Es por esto.»</p>
-          </article>
-          <article class="ficha ficha--girada-2" style="--tinta: var(--escriban)">
-            <span class="ficha__pestana">Que te escriban</span>
-            <p class="ficha__negocio">Belleza y barbería</p>
-            <p class="ficha__gancho">«Escríbeme “FOTO” y te digo qué corte le queda a tu cara.»</p>
-          </article>
-          <article class="ficha ficha--girada-3" style="--tinta: var(--compren)">
-            <span class="ficha__pestana">Que te compren</span>
-            <p class="ficha__negocio">Comida</p>
-            <p class="ficha__gancho">«Este es el plato que más piden los viernes. Y hoy es viernes.»</p>
-            <span class="sello" aria-hidden="true">Listo para grabar</span>
-          </article>
+        <div class="hero__movil" aria-hidden="true">
+          <div class="movil">
+            <div class="movil__pantalla">
+              <div class="movil__arriba"><span>Reels</span><span class="movil__rec"><i></i>REC</span></div>
+              <span class="movil__chip" data-chip style="--obj: var(--vean)">Que te vean · Impuestos</span>
+              <p class="movil__gancho"><span data-gancho>Tu reembolso no es pequeño por mala suerte. Es por esto.</span><i class="caret">_</i></p>
+              <div class="movil__tiempo">
+                <span data-seg translate="no">0:03</span>
+                <div class="movil__barra"><i data-barra></i></div>
+                <span>los 3 primeros segundos</span>
+              </div>
+            </div>
+          </div>
+          <p class="movil__pie">// el gancho decide si se quedan</p>
         </div>
       </div>
     </section>
 
+    <!-- Tira en movimiento -->
+    <div class="tira" aria-hidden="true">
+      <div class="tira__pista">
+        <span>5,000 ganchos en español <i></i> 4 objetivos <i></i> 12 negocios <i></i> 3 ganchos en 30 segundos <i></i> Pago único <i></i> Regalos hasta el 31 de diciembre <i></i></span>
+        <span>5,000 ganchos en español <i></i> 4 objetivos <i></i> 12 negocios <i></i> 3 ganchos en 30 segundos <i></i> Pago único <i></i> Regalos hasta el 31 de diciembre <i></i></span>
+        <span>5,000 ganchos en español <i></i> 4 objetivos <i></i> 12 negocios <i></i> 3 ganchos en 30 segundos <i></i> Pago único <i></i> Regalos hasta el 31 de diciembre <i></i></span>
+      </div>
+    </div>
+
     <!-- ==== 2. Dolores ==== -->
-    <section class="seccion seccion--tostada" aria-labelledby="t-dolores">
+    <section class="seccion" aria-labelledby="t-dolores">
       <div class="contenedor">
-        <h2 id="t-dolores" class="titulo-seccion">¿Te pasa esto cada vez que te toca grabar?</h2>
+        <div class="cabeza rv">
+          <span class="id">// 01 · el problema</span>
+          <h2 id="t-dolores" class="h2">¿Te pasa esto cada vez que te toca <em>grabar</em>?</h2>
+        </div>
         <div class="rejilla rejilla--2">
-          <article class="dolor">
+          <article class="error rv">
+            <span class="error__id" translate="no">✕ error_01</span>
             <h3>Te quedas 20 minutos frente a la cámara sin saber cómo empezar</h3>
             <p>Tienes el celular listo y el tema claro. Lo que no sale es la primera frase, y el video se queda para mañana.</p>
           </article>
-          <article class="dolor">
+          <article class="error rv">
+            <span class="error__id" translate="no">✕ error_02</span>
             <h3>Empiezas con «Hola, hoy les voy a hablar de…» y la gente se va</h3>
             <p>Ese primer segundo te presenta a ti y no le dice nada a quien pasa el dedo. Sacas 80 vistas y no sabes por qué.</p>
           </article>
-          <article class="dolor">
+          <article class="error rv">
+            <span class="error__id" translate="no">✕ error_03</span>
             <h3>Guardas videos «para inspirarte» y no los vuelves a abrir</h3>
             <p>La carpeta de guardados crece cada semana. Cuando te sientas a grabar, igual empiezas de cero.</p>
           </article>
-          <article class="dolor">
+          <article class="error rv">
+            <span class="error__id" translate="no">✕ error_04</span>
             <h3>Le pides ideas a ChatGPT y te da frases que no suenan a ti</h3>
             <p>Suenan a anuncio de televisión. Las lees en voz alta y te da vergüenza grabarlas.</p>
           </article>
@@ -113,148 +133,141 @@
     </section>
 
     <!-- ==== 3. Beneficios ==== -->
-    <section class="seccion seccion--cartulina" aria-labelledby="t-beneficios">
+    <section class="seccion seccion--alt" aria-labelledby="t-beneficios">
       <div class="contenedor">
-        <h2 id="t-beneficios" class="titulo-seccion">Lo que cambia la próxima vez que grabes</h2>
-        <div class="rejilla rejilla--3">
-          <article class="beneficio">
-            <span class="numero" translate="no">01</span>
-            <h3>Sabes cómo empezar en 30 segundos</h3>
-            <p>Eliges lo que quieres conseguir y tienes 3 arranques para escoger. Se acabó quedarte en blanco frente a la cámara.</p>
-          </article>
-          <article class="beneficio">
-            <span class="numero" translate="no">02</span>
-            <h3>Grabas entre cliente y cliente</h3>
-            <p>Con 15 minutos alcanza: el gancho ya está pensado y solo te toca decirlo con tus palabras.</p>
-          </article>
-          <article class="beneficio">
-            <span class="numero" translate="no">03</span>
-            <h3>Dejas de empezar con «Hola, hoy les voy a hablar de…»</h3>
-            <p>Tus videos arrancan con algo que le importa a quien mira, no con tu presentación.</p>
-          </article>
-          <article class="beneficio">
-            <span class="numero" translate="no">04</span>
-            <h3>Sabes qué escribir en pantalla</h3>
-            <p>Los 100 ganchos listos para grabar traen el texto corto que va encima del video, para quien lo mira sin sonido.</p>
-          </article>
-          <article class="beneficio">
-            <span class="numero" translate="no">05</span>
-            <h3>Publicas aunque no quieras salir a cámara</h3>
-            <p>La vista «Sin salir a cámara» junta ganchos que funcionan como texto en pantalla, encima de un video de tu producto o de tu local.</p>
-          </article>
-          <article class="beneficio">
-            <span class="numero" translate="no">06</span>
-            <h3>Dejas de pensar «yo no sirvo para esto»</h3>
-            <p>Si un video no arranca, cambias solo el gancho y lo vuelves a publicar. Un video flojo se convierte en dos intentos.</p>
-          </article>
+        <div class="cabeza rv">
+          <span class="id">// 02 · lo que cambia</span>
+          <h2 id="t-beneficios" class="h2">Lo que cambia la próxima vez que <em>grabes</em></h2>
         </div>
-      </div>
-    </section>
-
-    <!-- ==== 4. Solución ==== -->
-    <section class="seccion seccion--tostada" aria-labelledby="t-solucion">
-      <div class="contenedor solucion">
-        <div class="solucion__texto">
-          <p class="etiqueta">Por qué no te funcionaba</p>
-          <h2 id="t-solucion" class="titulo-seccion">No necesitas 5,000 ganchos. Necesitas los 3 correctos para el video de hoy.</h2>
-          <p>Y esos no se encuentran por tema: se encuentran por objetivo. Un gancho para que te guarden el video no es el mismo que uno para que te escriban o para que te compren. Elegir mal el gancho es como poner el letrero equivocado en la puerta del negocio.</p>
-          <p>Por eso no fallaste tú. Fallaba el orden: empezabas por el tema. Con Hook Vault empiezas por lo que quieres conseguir hoy, filtras por tu negocio y tienes 3 ganchos listos antes de que se te enfríe el café.</p>
-        </div>
-        <ol class="embudo" aria-label="De 5,000 ganchos a 3">
-          <li><span class="embudo__cifra" translate="no">5,000</span><span class="embudo__texto">ganchos en el Banco</span></li>
-          <li><span class="embudo__cifra" translate="no">4</span><span class="embudo__texto">objetivos: eliges uno</span></li>
-          <li><span class="embudo__cifra" translate="no">12</span><span class="embudo__texto">negocios: filtras el tuyo</span></li>
-          <li><span class="embudo__cifra" translate="no">3</span><span class="embudo__texto">fichas para grabar hoy</span></li>
+        <ol class="filas">
+          <li class="fila rv"><span class="fila__n" translate="no">01</span><div><h3>Sabes cómo empezar en 30 segundos</h3><p>Eliges lo que quieres conseguir y tienes 3 arranques para escoger. Se acabó quedarte en blanco frente a la cámara.</p></div></li>
+          <li class="fila rv"><span class="fila__n" translate="no">02</span><div><h3>Grabas entre cliente y cliente</h3><p>Con 15 minutos alcanza: el gancho ya está pensado y solo te toca decirlo con tus palabras.</p></div></li>
+          <li class="fila rv"><span class="fila__n" translate="no">03</span><div><h3>Dejas de empezar con «Hola, hoy les voy a hablar de…»</h3><p>Tus videos arrancan con algo que le importa a quien mira, no con tu presentación.</p></div></li>
+          <li class="fila rv"><span class="fila__n" translate="no">04</span><div><h3>Sabes qué escribir en pantalla</h3><p>Los 100 ganchos listos para grabar traen el texto corto que va encima del video, para quien lo mira sin sonido.</p></div></li>
+          <li class="fila rv"><span class="fila__n" translate="no">05</span><div><h3>Publicas aunque no quieras salir a cámara</h3><p>La vista «Sin salir a cámara» junta ganchos que funcionan como texto en pantalla, encima de un video de tu producto o de tu local.</p></div></li>
+          <li class="fila rv"><span class="fila__n" translate="no">06</span><div><h3>Dejas de pensar «yo no sirvo para esto»</h3><p>Si un video no arranca, cambias solo el gancho y lo vuelves a publicar. Un video flojo se convierte en dos intentos.</p></div></li>
         </ol>
       </div>
     </section>
 
-    <!-- ==== 5. Firma: el Selector en vivo ==== -->
-    <section class="seccion seccion--escritorio" id="selector" aria-labelledby="t-selector">
-      <div class="contenedor">
-        <p class="etiqueta etiqueta--clara">El Selector en vivo</p>
-        <h2 id="t-selector" class="titulo-seccion">Pruébalo: elige qué quieres conseguir hoy</h2>
-        <p class="entradilla">Toca un objetivo y tu negocio. Salen 3 fichas, como en el Selector. En esta demostración hay 4 de los 12 negocios.</p>
+    <!-- ==== 4. Solución ==== -->
+    <section class="seccion" aria-labelledby="t-solucion">
+      <div class="contenedor dos-col">
+        <div class="rv">
+          <span class="id">// 03 · por qué no te funcionaba</span>
+          <h2 id="t-solucion" class="h2">No necesitas 5,000 ganchos. Necesitas los <em>3 correctos</em> para el video de hoy.</h2>
+          <p class="texto">Y esos no se encuentran por tema: se encuentran por objetivo. Un gancho para que te guarden el video no es el mismo que uno para que te escriban o para que te compren. Elegir mal el gancho es como poner el letrero equivocado en la puerta del negocio.</p>
+          <p class="texto">Por eso no fallaste tú. Fallaba el orden: empezabas por el tema. Con Hook Vault empiezas por lo que quieres conseguir hoy, filtras por tu negocio y tienes 3 ganchos listos antes de que se te enfríe el café.</p>
+        </div>
+        <div class="terminal terminal--sombra rv" data-embudo>
+          <div class="terminal__barra"><span class="puntos" aria-hidden="true"><i></i><i></i><i></i></span><span translate="no">hookvault — filtrar</span></div>
+          <div class="terminal__cuerpo">
+            <p class="cuenta" aria-hidden="true"><b data-cuenta translate="no">3</b><span data-cuenta-texto>fichas para grabar hoy</span></p>
+            <ol class="pasos-terminal" aria-label="De 5,000 ganchos a 3">
+              <li><span translate="no">5,000</span> ganchos en el Banco</li>
+              <li><span translate="no">4</span> objetivos: eliges uno</li>
+              <li><span translate="no">12</span> negocios: filtras el tuyo</li>
+              <li class="ok"><span translate="no">3</span> fichas para grabar hoy</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <div class="selector">
-          <div class="selector__pestanas" role="group" aria-label="Objetivo del video">
-            <button type="button" class="pestana" style="--tinta: var(--vean)" data-objetivo="vean" aria-pressed="true">Que te vean</button>
-            <button type="button" class="pestana" style="--tinta: var(--guarden)" data-objetivo="guarden" aria-pressed="false">Que te guarden</button>
-            <button type="button" class="pestana" style="--tinta: var(--escriban)" data-objetivo="escriban" aria-pressed="false">Que te escriban</button>
-            <button type="button" class="pestana" style="--tinta: var(--compren)" data-objetivo="compren" aria-pressed="false">Que te compren</button>
+    <!-- ==== 5. Firma: el Selector en vivo ==== -->
+    <section class="seccion seccion--selector" id="selector" aria-labelledby="t-selector">
+      <div class="contenedor">
+        <div class="cabeza rv">
+          <span class="id">// 04 · el selector en vivo</span>
+          <h2 id="t-selector" class="h2">Pruébalo: elige qué quieres <em>conseguir hoy</em></h2>
+          <p class="desc">Toca un objetivo y tu negocio. Salen 3 fichas, como en el Selector. En esta demostración hay 4 de los 12 negocios.</p>
+        </div>
+
+        <div class="app rv">
+          <div class="terminal__barra"><span class="puntos" aria-hidden="true"><i></i><i></i><i></i></span><span translate="no">hookvault — selector</span><span class="vivo"><i aria-hidden="true"></i>en vivo</span></div>
+          <div class="app__cuerpo">
+            <p class="app__cmd" translate="no" aria-hidden="true"><span class="prompt">$</span> hookvault <span data-cmd-obj>--objetivo vean</span> <span data-cmd-neg>--negocio belleza</span></p>
+            <div class="selector__pestanas" role="group" aria-label="Objetivo del video">
+              <button type="button" class="pestana" style="--obj: var(--vean)" data-objetivo="vean" aria-pressed="true">Que te vean</button>
+              <button type="button" class="pestana" style="--obj: var(--guarden)" data-objetivo="guarden" aria-pressed="false">Que te guarden</button>
+              <button type="button" class="pestana" style="--obj: var(--escriban)" data-objetivo="escriban" aria-pressed="false">Que te escriban</button>
+              <button type="button" class="pestana" style="--obj: var(--compren)" data-objetivo="compren" aria-pressed="false">Que te compren</button>
+            </div>
+            <div class="selector__negocios" role="group" aria-label="Tu negocio">
+              <button type="button" class="chip" data-negocio="belleza" aria-pressed="true">Belleza y barbería</button>
+              <button type="button" class="chip" data-negocio="impuestos" aria-pressed="false">Impuestos y contabilidad</button>
+              <button type="button" class="chip" data-negocio="casas" aria-pressed="false">Bienes raíces</button>
+              <button type="button" class="chip" data-negocio="comida" aria-pressed="false">Comida</button>
+            </div>
+            <div class="selector__fichas" id="selectorFichas" aria-live="polite">
+              <article class="gancho" style="--obj: var(--vean)">
+                <span class="gancho__tag">Que te vean</span>
+                <p class="gancho__texto">«El error número uno que hace que tu tinte dure la mitad.»</p>
+                <p class="gancho__pantalla"><span>En pantalla:</span> Tu tinte dura la mitad por esto</p>
+              </article>
+              <article class="gancho" style="--obj: var(--vean)">
+                <span class="gancho__tag">Que te vean</span>
+                <p class="gancho__texto">«Nadie te cuenta esto antes de cortarte el fleco.»</p>
+                <p class="gancho__pantalla"><span>En pantalla:</span> Antes de cortarte el fleco…</p>
+              </article>
+              <article class="gancho" style="--obj: var(--vean)">
+                <span class="gancho__tag">Que te vean</span>
+                <p class="gancho__texto">«Llevas años lavándote el cabello mal. Te explico por qué.»</p>
+                <p class="gancho__pantalla"><span>En pantalla:</span> Te lavas el cabello mal (y no lo sabes)</p>
+              </article>
+            </div>
+            <p class="regla"><strong>La regla del cambio de gancho:</strong> si un video no arranca, no lo tiras. Cambias solo el gancho por otro de la misma pestaña y lo vuelves a publicar.</p>
           </div>
-          <div class="selector__negocios" role="group" aria-label="Tu negocio">
-            <button type="button" class="chip" data-negocio="belleza" aria-pressed="true">Belleza y barbería</button>
-            <button type="button" class="chip" data-negocio="impuestos" aria-pressed="false">Impuestos y contabilidad</button>
-            <button type="button" class="chip" data-negocio="casas" aria-pressed="false">Bienes raíces</button>
-            <button type="button" class="chip" data-negocio="comida" aria-pressed="false">Comida</button>
-          </div>
-          <div class="selector__fichas" id="selectorFichas" aria-live="polite">
-            <article class="ficha" style="--tinta: var(--vean)">
-              <span class="ficha__pestana">Que te vean</span>
-              <p class="ficha__gancho">«El error número uno que hace que tu tinte dure la mitad.»</p>
-              <p class="ficha__pantalla"><span>En pantalla:</span> Tu tinte dura la mitad por esto</p>
-            </article>
-            <article class="ficha" style="--tinta: var(--vean)">
-              <span class="ficha__pestana">Que te vean</span>
-              <p class="ficha__gancho">«Nadie te cuenta esto antes de cortarte el fleco.»</p>
-              <p class="ficha__pantalla"><span>En pantalla:</span> Antes de cortarte el fleco…</p>
-            </article>
-            <article class="ficha" style="--tinta: var(--vean)">
-              <span class="ficha__pestana">Que te vean</span>
-              <p class="ficha__gancho">«Llevas años lavándote el cabello mal. Te explico por qué.»</p>
-              <p class="ficha__pantalla"><span>En pantalla:</span> Te lavas el cabello mal (y no lo sabes)</p>
-            </article>
-          </div>
-          <p class="selector__regla"><strong>La regla del cambio de gancho:</strong> si un video no arranca, no lo tiras. Cambias solo el gancho por otro de la misma pestaña y lo vuelves a publicar.</p>
         </div>
       </div>
     </section>
 
     <!-- ==== 6. Cómo funciona en 3 pasos ==== -->
-    <section class="seccion seccion--cartulina" aria-labelledby="t-pasos">
+    <section class="seccion" aria-labelledby="t-pasos">
       <div class="contenedor">
-        <h2 id="t-pasos" class="titulo-seccion">Cómo funciona: 3 pasos y 15 minutos</h2>
-        <ol class="pasos">
-          <li class="paso">
-            <span class="numero" translate="no">01</span>
-            <h3>Eliges el objetivo de hoy</h3>
-            <p>Que te vean, que te guarden, que te escriban o que te compren. Tocas una pestaña.</p>
-          </li>
-          <li class="paso">
-            <span class="numero" translate="no">02</span>
-            <h3>Filtras por tu negocio</h3>
-            <p>Salen 3 ganchos pensados para tu oficio, con lo que dices y lo que pones en pantalla.</p>
-          </li>
-          <li class="paso">
-            <span class="numero" translate="no">03</span>
-            <h3>Grabas en 15 minutos</h3>
-            <p>Dices el gancho con tus palabras, sigues con tu tema y publicas. Si no arranca, cambias el gancho y lo vuelves a subir.</p>
-          </li>
+        <div class="cabeza rv">
+          <span class="id">// 05 · cómo funciona</span>
+          <h2 id="t-pasos" class="h2">Cómo funciona: 3 pasos y <em>15 minutos</em></h2>
+        </div>
+        <ol class="pasos rv">
+          <li class="paso"><span class="paso__n" translate="no">01</span><h3>Eliges el objetivo de hoy</h3><p>Que te vean, que te guarden, que te escriban o que te compren. Tocas una pestaña.</p></li>
+          <li class="paso"><span class="paso__n" translate="no">02</span><h3>Filtras por tu negocio</h3><p>Salen 3 ganchos pensados para tu oficio, con lo que dices y lo que pones en pantalla.</p></li>
+          <li class="paso"><span class="paso__n" translate="no">03</span><h3>Grabas en 15 minutos</h3><p>Dices el gancho con tus palabras, sigues con tu tema y publicas. Si no arranca, cambias el gancho y lo vuelves a subir.</p></li>
         </ol>
-        <div class="centrado">
-          <a href="#oferta" class="boton">Sí, quiero grabar mi próximo video hoy</a>
+        <div class="centrado rv">
+          <a href="#oferta" class="btn btn--grande">Sí, quiero grabar mi próximo video hoy <span class="flecha" aria-hidden="true"></span></a>
         </div>
       </div>
     </section>
 
     <!-- ==== 7. Entregables ==== -->
-    <section class="seccion seccion--tostada" aria-labelledby="t-entregables">
+    <section class="seccion seccion--alt" aria-labelledby="t-entregables">
       <div class="contenedor">
-        <h2 id="t-entregables" class="titulo-seccion">Lo que te llevas</h2>
+        <div class="cabeza cabeza--centro rv">
+          <span class="id">// 06 · lo que te llevas</span>
+          <h2 id="t-entregables" class="h2">Lo que te <em>llevas</em></h2>
+        </div>
+        <div class="dispositivos rv" aria-hidden="true">
+          <div class="portatil">
+            <div class="portatil__pantalla"><img src="img/vistazo-banco.webp" width="640" height="800" loading="lazy" decoding="async" alt=""></div>
+            <div class="portatil__base"></div>
+          </div>
+          <div class="telefono"><img src="img/vistazo-problema.webp" width="640" height="800" loading="lazy" decoding="async" alt=""></div>
+          <span class="dispositivos__sello" translate="no">5,000 ganchos · Notion</span>
+        </div>
         <div class="rejilla rejilla--3">
-          <article class="ficha ficha--entregable">
-            <span class="ficha__pestana">Notion</span>
+          <article class="tarjeta rv">
+            <span class="etiqueta" translate="no">[ Notion ]</span>
             <h3>El Banco: 5,000 ganchos en español</h3>
             <p>Base de datos en Notion con 35 categorías. Cada gancho trae un ejemplo y la psicología que lo hace funcionar. Lo buscas por palabra desde el celular.</p>
           </article>
-          <article class="ficha ficha--entregable">
-            <span class="ficha__pestana">Notion</span>
+          <article class="tarjeta tarjeta--destacada rv">
+            <span class="etiqueta" translate="no">[ Notion ]</span>
             <h3>El Selector de 3 segundos</h3>
             <p>Vistas filtradas sobre el Banco: 4 objetivos y 12 negocios (bienes raíces, belleza y barbería, impuestos, remodelación, comida y más). Y una vista «Sin salir a cámara».</p>
           </article>
-          <article class="ficha ficha--entregable">
-            <span class="ficha__pestana" translate="no">PDF</span>
+          <article class="tarjeta rv">
+            <span class="etiqueta" translate="no">[ PDF ]</span>
             <h3>Los 100 ganchos listos para grabar</h3>
             <p>100 ganchos elegidos, uno por ficha: lo que dices, lo que pones en pantalla, lo que haces en la toma y cómo cambiar dos palabras para tu negocio.</p>
           </article>
@@ -263,46 +276,62 @@
     </section>
 
     <!-- ==== 8. Vistazo de producto ==== -->
-    <section class="seccion seccion--cartulina" aria-labelledby="t-vistazo">
+    <section class="seccion" aria-labelledby="t-vistazo">
       <div class="contenedor">
-        <h2 id="t-vistazo" class="titulo-seccion">Así se ve el Banco por dentro</h2>
-        <p class="entradilla">Capturas del Notion que recibes. Funciona con Notion gratis, en el celular o la computadora.</p>
-        <div class="vistazo">
-          <figure class="vistazo__item">
-            <span class="ficha__pestana vistazo__pestana">35 categorías</span>
-            <img src="img/vistazo-banco.jpg" width="800" height="1000" loading="lazy" alt="Página de inicio del Banco en Notion con las instrucciones de uso y la lista de categorías">
+        <div class="cabeza rv">
+          <span class="id">// 07 · por dentro</span>
+          <h2 id="t-vistazo" class="h2">Así se ve el Banco <em>por dentro</em></h2>
+          <p class="desc">Capturas del Notion que recibes. Funciona con Notion gratis, en el celular o la computadora.</p>
+        </div>
+        <div class="vistazo rv">
+          <figure class="captura">
+            <figcaption>35 categorías</figcaption>
+            <img src="img/vistazo-banco.webp" width="640" height="800" loading="lazy" decoding="async" alt="Página de inicio del Banco en Notion con las instrucciones de uso y la lista de categorías">
           </figure>
-          <figure class="vistazo__item">
-            <span class="ficha__pestana vistazo__pestana">Cada gancho</span>
-            <img src="img/vistazo-problema.jpg" width="800" height="1000" loading="lazy" alt="Categoría Problema-Solución en Notion: cada gancho con su plantilla, un ejemplo y la psicología">
+          <figure class="captura">
+            <figcaption>Cada gancho</figcaption>
+            <img src="img/vistazo-problema.webp" width="640" height="800" loading="lazy" decoding="async" alt="Categoría Problema-Solución en Notion: cada gancho con su plantilla, un ejemplo y la psicología">
           </figure>
-          <figure class="vistazo__item">
-            <span class="ficha__pestana vistazo__pestana">Por categoría</span>
-            <img src="img/vistazo-ventas.jpg" width="800" height="1000" loading="lazy" alt="Categoría Ventas y Persuasión en Notion con 90 ganchos">
+          <figure class="captura">
+            <figcaption>Por categoría</figcaption>
+            <img src="img/vistazo-ventas.webp" width="640" height="800" loading="lazy" decoding="async" alt="Categoría Ventas y Persuasión en Notion con 90 ganchos">
           </figure>
+        </div>
+
+        <div class="categorias rv">
+          <p class="categorias__titulo">// las 35 categorías del Banco</p>
+          <ul class="v-oculto">
+            <li>Productividad y Gestión del Tiempo</li><li>Productividad y Enfoque</li><li>Creación de Contenido y Creatividad</li><li>Dinero, Riqueza y Negocios</li><li>Negocios y Emprendimiento</li><li>Marketing y Marca Personal</li><li>Curiosidad e Intriga</li><li>Identificable y Punto de Vista</li><li>Identificable y Vida Cotidiana</li><li>Ventas y Persuasión</li><li>Cambios de Mentalidad</li><li>Soluciones</li><li>FOMO y Urgencia</li><li>Curiosidad y Bucle Abierto</li><li>Educativos</li><li>Visión de Futuro y Aspiracional</li><li>Estilo de Vida e Identificación</li><li>Motivacional e Inspiracional</li><li>Persuasión y Psicología de Ventas</li><li>Prueba Social y Testimonios</li><li>Rompe-Objeciones y Rompe-Mitos</li><li>Salud y Fitness</li><li>Miedo y Urgencia</li><li>Dinero y Finanzas</li><li>Casos de Estudio y Pruebas</li><li>Motivación y Mentalidad</li><li>Autoridad y Experiencia</li><li>Identificables</li><li>Problema-Solución</li><li>Verdades Impactantes y Descubrimientos</li><li>Temas Tendencia y Actualidad</li><li>Transformación e Historia de Éxito</li><li>Humor y Entretenimiento</li><li>Urgencia y Narrativa</li><li>Estilo de Vida y Hábitos Diarios</li>
+          </ul>
+          <div class="carril" aria-hidden="true"><div class="carril__pista" data-carril="0"></div></div>
+          <div class="carril carril--inverso" aria-hidden="true"><div class="carril__pista" data-carril="1"></div></div>
         </div>
       </div>
     </section>
 
     <!-- ==== 9. Regalos ==== -->
-    <section class="seccion seccion--tostada" aria-labelledby="t-regalos">
+    <section class="seccion seccion--alt" aria-labelledby="t-regalos">
       <div class="contenedor">
-        <h2 id="t-regalos" class="titulo-seccion">3 regalos de lanzamiento, hasta el 31 de diciembre de 2026</h2>
+        <div class="cabeza rv">
+          <span class="id">// 08 · regalos de lanzamiento</span>
+          <h2 id="t-regalos" class="h2">3 regalos de lanzamiento, hasta el <em>31 de diciembre de 2026</em></h2>
+          <p class="quedan" data-quedan hidden><i aria-hidden="true"></i><span></span></p>
+        </div>
         <div class="rejilla rejilla--3">
-          <article class="ficha ficha--regalo">
-            <span class="ficha__pestana">Regalo 1</span>
+          <article class="tarjeta regalo rv">
+            <span class="regalo__tag">Regalo 01</span>
             <p class="regalo__objecion">«Tengo el gancho, pero después me quedo en blanco.»</p>
             <h3>Del gancho al guion</h3>
             <p>Plantilla de una página para el video de 30 segundos: gancho, tres frases y cierre. Con 10 ejemplos ya hechos.</p>
           </article>
-          <article class="ficha ficha--regalo">
-            <span class="ficha__pestana">Regalo 2</span>
+          <article class="tarjeta regalo rv">
+            <span class="regalo__tag">Regalo 02</span>
             <p class="regalo__objecion">«Esto me lo da ChatGPT gratis.»</p>
             <h3>El Adaptador para ChatGPT</h3>
             <p>Un prompt que toma cualquier gancho del Banco y lo reescribe con el nombre de tu negocio, tu ciudad y tu cliente. La IA deja de inventar: adapta.</p>
           </article>
-          <article class="ficha ficha--regalo">
-            <span class="ficha__pestana">Regalo 3</span>
+          <article class="tarjeta regalo rv">
+            <span class="regalo__tag">Regalo 03</span>
             <p class="regalo__objecion">«No tengo tiempo para planificar contenido.»</p>
             <h3>Tu primera semana lista</h3>
             <p>7 videos planificados, uno por día: objetivo, gancho del Selector, idea y qué grabar. Lo copias el lunes y grabas sin pensar.</p>
@@ -314,45 +343,51 @@
 
     <!-- ==== 10. Prueba: 10 ganchos gratis ==== -->
     <!-- PENDIENTE: grabación del Selector funcionando (tarea 4.2), cuando exista el Selector en Notion -->
-    <section class="seccion seccion--cartulina" id="gratis" aria-labelledby="t-gratis">
+    <section class="seccion" id="gratis" aria-labelledby="t-gratis">
       <div class="contenedor">
-        <h2 id="t-gratis" class="titulo-seccion">Pruébalo antes de pagar: 10 ganchos gratis</h2>
-        <p class="entradilla">Sacados del Banco tal cual: la plantilla, un ejemplo y la psicología que lo hace funcionar. Úsalos hoy en tu próximo video.</p>
-        <div class="baraja" id="baraja" aria-live="polite">
-          <article class="ficha ficha--banco">
-            <span class="ficha__pestana">Problema-Solución</span>
-            <p class="ficha__gancho">«No tienes problema de [X] — tienes problema de [causa real].»</p>
-            <p class="ficha__dato"><span>Ejemplo:</span> No tienes problema de contenido — tienes problema de mensaje.</p>
-            <p class="ficha__dato"><span>Psicología:</span> Reencuadre de dolor.</p>
+        <div class="cabeza rv">
+          <span class="id">// 09 · pruébalo gratis</span>
+          <h2 id="t-gratis" class="h2">Pruébalo antes de pagar: <em>10 ganchos gratis</em></h2>
+          <p class="desc">Sacados del Banco tal cual: la plantilla, un ejemplo y la psicología que lo hace funcionar. Úsalos hoy en tu próximo video.</p>
+        </div>
+        <div class="baraja rv" id="baraja" aria-live="polite">
+          <article class="gratis">
+            <span class="gratis__cat">Problema-Solución</span>
+            <p class="gratis__plantilla">«No tienes problema de [X] — tienes problema de [causa real].»</p>
+            <p class="gratis__dato"><span>Ejemplo:</span> No tienes problema de contenido — tienes problema de mensaje.</p>
+            <p class="gratis__dato"><span>Psicología:</span> Reencuadre de dolor.</p>
           </article>
-          <article class="ficha ficha--banco">
-            <span class="ficha__pestana">Problema-Solución</span>
-            <p class="ficha__gancho">«El error #1 que te mantiene en [problema].»</p>
-            <p class="ficha__dato"><span>Ejemplo:</span> El error #1 que te mantiene con bajo ingreso es cobrar barato.</p>
-            <p class="ficha__dato"><span>Psicología:</span> Claridad de un solo error.</p>
+          <article class="gratis">
+            <span class="gratis__cat">Problema-Solución</span>
+            <p class="gratis__plantilla">«El error #1 que te mantiene en [problema].»</p>
+            <p class="gratis__dato"><span>Ejemplo:</span> El error #1 que te mantiene con bajo ingreso es cobrar barato.</p>
+            <p class="gratis__dato"><span>Psicología:</span> Claridad de un solo error.</p>
           </article>
-          <article class="ficha ficha--banco">
-            <span class="ficha__pestana">Ventas y Persuasión</span>
-            <p class="ficha__gancho">«Tu precio no es muy alto, tu valor no es claro.»</p>
-            <p class="ficha__dato"><span>Ejemplo:</span> El mismo reloj de $1.000 parece barato si “salva vidas” vs “da la hora”.</p>
-            <p class="ficha__dato"><span>Psicología:</span> Reencuadre valor vs coste.</p>
+          <article class="gratis">
+            <span class="gratis__cat">Ventas y Persuasión</span>
+            <p class="gratis__plantilla">«Tu precio no es muy alto, tu valor no es claro.»</p>
+            <p class="gratis__dato"><span>Ejemplo:</span> El mismo reloj de $1.000 parece barato si “salva vidas” vs “da la hora”.</p>
+            <p class="gratis__dato"><span>Psicología:</span> Reencuadre valor vs coste.</p>
           </article>
         </div>
         <div class="baraja__control">
-          <button type="button" class="boton boton--secundario" id="barajaSiguiente">Saca otras 3 fichas</button>
+          <button type="button" class="btn btn--fantasma" id="barajaSiguiente">Saca otras 3 fichas</button>
           <p class="baraja__cuenta" id="barajaCuenta" translate="no">1-3 / 10</p>
         </div>
       </div>
     </section>
 
     <!-- ==== 11. Oferta ==== -->
-    <section class="seccion seccion--escritorio" id="oferta" aria-labelledby="t-oferta">
+    <section class="seccion seccion--alt seccion--oferta" id="oferta" aria-labelledby="t-oferta" data-sticky-fin>
+      <div class="oferta__brillo" aria-hidden="true"></div>
       <div class="contenedor oferta">
-        <p class="etiqueta etiqueta--clara">La oferta</p>
-        <h2 id="t-oferta" class="titulo-seccion">Todo lo que te llevas hoy</h2>
+        <div class="cabeza cabeza--centro rv">
+          <span class="id">// 10 · la oferta</span>
+          <h2 id="t-oferta" class="h2">Todo lo que te llevas <em>hoy</em></h2>
+        </div>
 
-        <div class="ficha oferta__ficha">
-          <span class="ficha__pestana">Hook Vault</span>
+        <div class="plan rv">
+          <span class="plan__tag">Pago único</span>
           <dl class="pila">
             <div class="pila__fila"><dt>El Banco: 5,000 ganchos en español</dt><dd translate="no">$24</dd></div>
             <div class="pila__fila"><dt>El Selector de 3 segundos</dt><dd translate="no">$12</dd></div>
@@ -367,13 +402,12 @@
             <p class="precio__cifra" translate="no">$19.99</p>
             <p class="precio__detalle">Pago único · acceso de por vida · sin suscripción</p>
           </div>
+          <p class="pildora">Hoy te llevas <strong translate="no">$56</strong> en componentes por <strong translate="no">$19.99</strong>: <strong translate="no">$36.01</strong> más de lo que pagas.</p>
+          <a href="https://knowin.lemonsqueezy.com/checkout/buy/43ab10fa-e193-438a-91b3-6e62a7f22103" class="btn btn--grande btn--ancho btn--latido lemonsqueezy-button">Sí, quiero grabar mi próximo video hoy <span class="flecha" aria-hidden="true"></span></a>
+          <p class="pagos" translate="no" aria-label="Formas de pago"><span>VISA</span><span>MASTERCARD</span><span>AMEX</span><span>APPLE PAY</span><span>GOOGLE PAY</span></p>
+          <p class="plan__micro">Pago seguro con Lemon Squeezy. El Banco te llega al momento por email; el Selector, los 100 ganchos listos para grabar y los regalos llegan al mismo email en un máximo de 48 horas.</p>
+          <p class="plan__micro">Los 3 regalos acompañan a Hook Vault hasta el 31 de diciembre de 2026. Desde el 1 de enero el precio es el mismo: son los regalos los que se retiran.</p>
         </div>
-
-        <p class="pildora">Hoy te llevas <strong translate="no">$56</strong> en componentes por <strong translate="no">$19.99</strong>: <strong translate="no">$36.01</strong> más de lo que pagas.</p>
-
-        <a href="https://knowin.lemonsqueezy.com/checkout/buy/43ab10fa-e193-438a-91b3-6e62a7f22103" class="boton boton--grande lemonsqueezy-button">Sí, quiero grabar mi próximo video hoy</a>
-        <p class="oferta__micro">Pago seguro con Lemon Squeezy. El Banco te llega al momento por email; el Selector, los 100 ganchos listos para grabar y los regalos llegan al mismo email en un máximo de 48 horas.</p>
-        <p class="oferta__micro">Los 3 regalos acompañan a Hook Vault hasta el 31 de diciembre de 2026. Desde el 1 de enero el precio es el mismo: son los regalos los que se retiran.</p>
       </div>
     </section>
 
@@ -381,19 +415,35 @@
     <!-- Oculta hasta tener opiniones de compradores con su permiso (tarea 4.3). No se publican opiniones de ejemplo. -->
 
     <!-- ==== 13. Garantía ==== -->
-    <section class="seccion seccion--tostada" aria-labelledby="t-garantia">
-      <div class="contenedor garantia">
-        <h2 id="t-garantia" class="titulo-seccion">Pruébalo antes de pagar</h2>
-        <p>Antes de comprar ves el Selector funcionando en esta página y usas 10 ganchos gratis. Y si, después de pagar, el acceso no te llega o falla y no lo resolvemos en 24 horas, te devolvemos el dinero.</p>
-        <p class="nota">Como es contenido digital de entrega inmediata, al comprar pides que la entrega empiece ya y renuncias al derecho de desistimiento (cancelar la compra en un plazo de 14 días). Todo el detalle está en los <a href="legal/terminos.html">Términos y Condiciones</a>.</p>
+    <section class="seccion" aria-labelledby="t-garantia">
+      <div class="contenedor dos-col">
+        <div class="rv">
+          <span class="id">// 11 · garantía</span>
+          <h2 id="t-garantia" class="h2">Pruébalo antes de <em>pagar</em></h2>
+          <p class="texto">Antes de comprar ves el Selector funcionando en esta página y usas 10 ganchos gratis. Y si, después de pagar, el acceso no te llega o falla y no lo resolvemos en 24 horas, te devolvemos el dinero.</p>
+          <p class="nota">Como es contenido digital de entrega inmediata, al comprar pides que la entrega empiece ya y renuncias al derecho de desistimiento (cancelar la compra en un plazo de 14 días). Todo el detalle está en los <a href="legal/terminos.html">Términos y Condiciones</a>.</p>
+        </div>
+        <div class="terminal terminal--sombra rv" aria-hidden="true">
+          <div class="terminal__barra"><span class="puntos"><i></i><i></i><i></i></span><span translate="no">hookvault — garantía</span></div>
+          <div class="terminal__cuerpo">
+            <p class="linea"><span class="prompt">$</span> <span translate="no">hookvault --antes-de-pagar</span></p>
+            <p class="linea ok">ves el Selector funcionando</p>
+            <p class="linea ok">usas 10 ganchos gratis</p>
+            <p class="linea"><span class="prompt">$</span> <span translate="no">hookvault --despues-de-pagar</span></p>
+            <p class="linea ok">si el acceso falla y no se resuelve en 24 h, te devolvemos el dinero</p>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- ==== 14. Preguntas frecuentes ==== -->
-    <section class="seccion seccion--cartulina" id="preguntas" aria-labelledby="t-preguntas">
+    <section class="seccion seccion--alt" id="preguntas" aria-labelledby="t-preguntas">
       <div class="contenedor contenedor--estrecho">
-        <h2 id="t-preguntas" class="titulo-seccion">Preguntas frecuentes</h2>
-        <div class="preguntas">
+        <div class="cabeza rv">
+          <span class="id">// 12 · preguntas</span>
+          <h2 id="t-preguntas" class="h2">Preguntas <em>frecuentes</em></h2>
+        </div>
+        <div class="faq rv">
           <details>
             <summary>¿Sirve para mi negocio?</summary>
             <p>Sí. El Selector tiene 12 negocios filtrados (bienes raíces, belleza, impuestos, remodelación, comida y más). Si el tuyo no está, el Adaptador para ChatGPT ajusta cualquier gancho a tu negocio en un minuto.</p>
@@ -426,13 +476,20 @@
       </div>
     </section>
 
-    <!-- ==== 15. CTA final ==== -->
-    <section class="seccion seccion--tostada cierre" aria-labelledby="t-cierre">
+    <!-- ==== 15. CTA final con resumen ==== -->
+    <section class="cierre" aria-labelledby="t-cierre" data-sticky-fin>
       <div class="contenedor centrado">
-        <div class="separador" aria-hidden="true"><span style="--tinta: var(--vean)"></span><span style="--tinta: var(--guarden)"></span><span style="--tinta: var(--escriban)"></span><span style="--tinta: var(--compren)"></span></div>
-        <h2 id="t-cierre" class="titulo-seccion">Tu próximo video puede estar grabado hoy</h2>
-        <p class="entradilla">Eliges el objetivo, filtras por tu negocio y grabas en 15 minutos. Pago único de <span translate="no">$19.99</span>.</p>
-        <a href="https://knowin.lemonsqueezy.com/checkout/buy/43ab10fa-e193-438a-91b3-6e62a7f22103" class="boton boton--grande lemonsqueezy-button">Sí, quiero grabar mi próximo video hoy</a>
+        <span class="id id--oscuro">// siguiente_paso</span>
+        <h2 id="t-cierre" class="h2">Tu próximo video puede estar grabado hoy</h2>
+        <p class="desc">Eliges el objetivo, filtras por tu negocio y grabas en 15 minutos.</p>
+        <ul class="resumen">
+          <li>El Banco: 5,000 ganchos</li>
+          <li>El Selector de 3 segundos</li>
+          <li>Los 100 ganchos listos para grabar</li>
+          <li>3 regalos hasta el 31 de diciembre</li>
+        </ul>
+        <p class="cierre__precio">Pago único <b translate="no">$19.99</b></p>
+        <a href="https://knowin.lemonsqueezy.com/checkout/buy/43ab10fa-e193-438a-91b3-6e62a7f22103" class="btn btn--grande btn--oscuro lemonsqueezy-button">Sí, quiero grabar mi próximo video hoy <span class="flecha" aria-hidden="true"></span></a>
       </div>
     </section>
 
@@ -440,16 +497,24 @@
 
   <!-- ==== 16. Legales ==== -->
   <footer class="pie">
-    <div class="contenedor pie__dentro">
-      <p class="pie__marca"><span translate="no">Hook Vault</span> es un producto de <span translate="no">Knowin LLC</span>.</p>
-      <nav class="pie__enlaces" aria-label="Legal y contacto">
-        <a href="legal/terminos.html">Términos y Condiciones</a>
-        <a href="legal/privacidad.html">Política de Privacidad</a>
-        <a href="mailto:kninfodigital@gmail.com" translate="no">kninfodigital@gmail.com</a>
-      </nav>
-      <p class="pie__copy">© 2026 <span translate="no">Knowin LLC</span></p>
+    <div class="contenedor">
+      <p class="pie__mega" aria-hidden="true" translate="no">hookvault<i>.</i></p>
+      <div class="pie__fila">
+        <p><span translate="no">Hook Vault</span> es un producto de <span translate="no">Knowin LLC</span>.</p>
+        <nav class="pie__enlaces" aria-label="Legal y contacto">
+          <a href="legal/terminos.html">Términos y Condiciones</a>
+          <a href="legal/privacidad.html">Política de Privacidad</a>
+          <a href="mailto:kninfodigital@gmail.com" translate="no">kninfodigital@gmail.com</a>
+        </nav>
+        <p translate="no">© 2026 Knowin LLC</p>
+      </div>
     </div>
   </footer>
+
+  <div class="pegajoso" aria-hidden="true">
+    <div><b translate="no">$19.99</b><small>Pago único</small></div>
+    <a href="#oferta" class="btn" tabindex="-1">Sí, quiero grabar hoy</a>
+  </div>
 
   <script src="scripts.js" defer></script>
 </body>

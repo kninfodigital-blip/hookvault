@@ -1,12 +1,21 @@
 /* ==========================================================================
-   Hook Vault — landing v3 · scripts
-   1. El Selector en vivo (demostración: 4 objetivos × 4 de los 12 negocios)
-   2. La baraja de los 10 ganchos gratis (de 3 en 3)
-   3. Medición: InitiateCheckout y Purchase al píxel de Hook Vault (Lemon.js)
+   Hook Vault — landing v4 · scripts (vanilla, sin librerías)
+   1. Progreso de lectura y CTA pegajoso
+   2. Revelado al hacer scroll y contador 5,000 → 3
+   3. El celular del hero: los 3 primeros segundos de un Reel
+   4. Malla animada del hero (canvas 2D, misma pieza que apknowin.com)
+   5. El Selector en vivo (4 objetivos × 4 de los 12 negocios)
+   6. Las 35 categorías en movimiento
+   7. La baraja de los 10 ganchos gratis, con «Copiar»
+   8. Días que quedan para los regalos (fecha fija: 31-12-2026)
+   9. Medición: InitiateCheckout y Purchase al píxel de Hook Vault (Lemon.js)
+   Con «reducir movimiento» no hay tecleo, ni malla, ni contadores: todo queda visible.
    ========================================================================== */
 
 (function () {
   'use strict';
+
+  var reducido = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   var OBJETIVOS = {
     vean: 'Que te vean',
@@ -121,6 +130,27 @@
     ['Problema-Solución', 'El truco para resolver [problema] no es lo que crees.', 'El truco para resolver el bajo alcance no es más contenido — son mejores hooks.', 'Rompe expectativas.']
   ];
 
+  var HERO = [
+    ['vean', 'Que te vean · Impuestos', 'Tu reembolso no es pequeño por mala suerte. Es por esto.'],
+    ['escriban', 'Que te escriban · Belleza', 'Escríbeme “FOTO” y te digo qué corte le queda a tu cara.'],
+    ['compren', 'Que te compren · Comida', 'Este es el plato que más piden los viernes. Y hoy es viernes.']
+  ];
+
+  var CATEGORIAS = [
+    'Productividad y Gestión del Tiempo', 'Productividad y Enfoque', 'Creación de Contenido y Creatividad',
+    'Dinero, Riqueza y Negocios', 'Negocios y Emprendimiento', 'Marketing y Marca Personal', 'Curiosidad e Intriga',
+    'Identificable y Punto de Vista', 'Identificable y Vida Cotidiana', 'Ventas y Persuasión', 'Cambios de Mentalidad',
+    'Soluciones', 'FOMO y Urgencia', 'Curiosidad y Bucle Abierto', 'Educativos', 'Visión de Futuro y Aspiracional',
+    'Estilo de Vida e Identificación', 'Motivacional e Inspiracional', 'Persuasión y Psicología de Ventas',
+    'Prueba Social y Testimonios', 'Rompe-Objeciones y Rompe-Mitos', 'Salud y Fitness', 'Miedo y Urgencia',
+    'Dinero y Finanzas', 'Casos de Estudio y Pruebas', 'Motivación y Mentalidad', 'Autoridad y Experiencia',
+    'Identificables', 'Problema-Solución', 'Verdades Impactantes y Descubrimientos', 'Temas Tendencia y Actualidad',
+    'Transformación e Historia de Éxito', 'Humor y Entretenimiento', 'Urgencia y Narrativa', 'Estilo de Vida y Hábitos Diarios'
+  ];
+
+  function $(sel, ctx) { return (ctx || document).querySelector(sel); }
+  function $$(sel, ctx) { return Array.prototype.slice.call((ctx || document).querySelectorAll(sel)); }
+
   function crear(tag, clase, texto) {
     var el = document.createElement(tag);
     if (clase) el.className = clase;
@@ -135,26 +165,202 @@
     return p;
   }
 
-  // ---------- 1. El Selector en vivo ----------
+  // Escribe un texto letra a letra; se cancela si llega otra orden para el mismo elemento
+  function teclear(el, texto, ms, alTerminar) {
+    var orden = (el._orden || 0) + 1; el._orden = orden;
+    if (reducido) { el.textContent = texto; if (alTerminar) alTerminar(); return; }
+    var t0 = 0;
+    el.textContent = '';
+    function paso(ahora) {
+      if (el._orden !== orden) return;
+      if (!t0) t0 = ahora;
+      var n = Math.min(texto.length, Math.ceil((ahora - t0) / ms * texto.length));
+      el.textContent = texto.slice(0, n);
+      if (n < texto.length) requestAnimationFrame(paso); else if (alTerminar) alTerminar();
+    }
+    requestAnimationFrame(paso);
+  }
+
+  // ---------- 1. Progreso y CTA pegajoso ----------
+
+  var barraProgreso = $('.progreso');
+  var pegajoso = $('.pegajoso');
+  var hero = $('.hero');
+  var finesVisibles = 0, pasadoHero = false, pendiente = false;
+
+  function pintarScroll() {
+    pendiente = false;
+    var h = document.documentElement, max = h.scrollHeight - h.clientHeight;
+    if (barraProgreso) barraProgreso.style.transform = 'scaleX(' + (max > 0 ? h.scrollTop / max : 0) + ')';
+  }
+  addEventListener('scroll', function () { if (!pendiente) { pendiente = true; requestAnimationFrame(pintarScroll); } }, { passive: true });
+  pintarScroll();
+
+  function pintarPegajoso() { if (pegajoso) pegajoso.classList.toggle('on', pasadoHero && finesVisibles === 0); }
+  if ('IntersectionObserver' in window) {
+    if (hero) new IntersectionObserver(function (es) {
+      pasadoHero = !es[0].isIntersecting && es[0].boundingClientRect.top < 0; pintarPegajoso();
+    }, { threshold: 0 }).observe(hero);
+    $$('[data-sticky-fin]').forEach(function (fin) {
+      var dentro = false;
+      new IntersectionObserver(function (es) {
+        if (es[0].isIntersecting !== dentro) { dentro = es[0].isIntersecting; finesVisibles += dentro ? 1 : -1; pintarPegajoso(); }
+      }, { threshold: 0.1 }).observe(fin);
+    });
+  }
+
+  // ---------- 2. Revelado y contador ----------
+
+  var cuenta = $('[data-cuenta]');
+  var cuentaTexto = $('[data-cuenta-texto]');
+  var formato = function (n) { return n.toLocaleString('en-US'); };
+
+  function contar() {
+    if (!cuenta || reducido) return;
+    var desde = 5000, hasta = 3, dur = 1900, t0 = 0;
+    cuentaTexto.textContent = 'ganchos';
+    function paso(ahora) {
+      if (!t0) t0 = ahora;
+      var p = Math.min(1, (ahora - t0) / dur);
+      var suave = 1 - Math.pow(1 - p, 4);
+      cuenta.textContent = formato(Math.round(desde - (desde - hasta) * suave));
+      if (p < 1) requestAnimationFrame(paso);
+      else cuentaTexto.textContent = 'fichas para grabar hoy';
+    }
+    requestAnimationFrame(paso);
+  }
+  if (cuenta && !reducido) { cuenta.textContent = '5,000'; cuentaTexto.textContent = 'ganchos'; }
+
+  var revelar = $$('.rv');
+  if (!('IntersectionObserver' in window) || reducido) {
+    revelar.forEach(function (el) { el.classList.add('in', 'hecho'); });
+  } else {
+    var obsRv = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var el = e.target;
+        el.classList.add('in');
+        obsRv.unobserve(el);
+        if (el.hasAttribute('data-embudo')) setTimeout(contar, 250);
+        setTimeout(function () { el.classList.add('hecho'); }, 900 + (parseInt(el.style.getPropertyValue('--d'), 10) || 0));
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revelar.forEach(function (el) {
+      var hermanos = el.parentElement ? $$(':scope > .rv', el.parentElement) : [];
+      var i = hermanos.indexOf(el);
+      if (i > 0) el.style.setProperty('--d', (i % 4) * 90 + 'ms');
+      obsRv.observe(el);
+    });
+  }
+
+  // ---------- 3. El celular del hero ----------
+
+  (function () {
+    var chip = $('[data-chip]'), texto = $('[data-gancho]'), seg = $('[data-seg]'), barra = $('[data-barra]');
+    if (!chip || !texto || reducido) return;
+    var i = 0, vueltas = 0, MAX = HERO.length * 3;
+    function uno() {
+      if (vueltas >= MAX) return; // se queda quieto en el último gancho
+      var h = HERO[i], t0 = 0;
+      chip.textContent = h[1];
+      chip.style.setProperty('--obj', 'var(--' + h[0] + ')');
+      teclear(texto, h[2], 1500);
+      function reloj(ahora) {
+        if (!t0) t0 = ahora;
+        var t = ahora - t0;
+        barra.style.transform = 'scaleX(' + Math.min(1, t / 3000) + ')';
+        seg.textContent = '0:0' + Math.min(3, Math.floor(t / 1000));
+        if (t < 3000) requestAnimationFrame(reloj);
+        else setTimeout(function () { i = (i + 1) % HERO.length; vueltas++; uno(); }, 1700);
+      }
+      requestAnimationFrame(reloj);
+    }
+    var empezar = function () { setTimeout(uno, 900); };
+    if (document.readyState === 'complete') empezar(); else addEventListener('load', empezar, { once: true });
+  })();
+
+  // ---------- 4. Malla del hero (de apknowin.com, ≤ 3 KB) ----------
+
+  (function iniciarMalla(canvas) {
+    if (!canvas || reducido) return;
+    if (navigator.connection && navigator.connection.saveData) return;
+    var ctx = canvas.getContext('2d'); if (!ctx) return;
+    var N = matchMedia('(max-width: 900px)').matches ? 10 : 16;
+    var DPR = Math.min(window.devicePixelRatio || 1, 1.5);
+    var w = 0, h = 0, t = 0, raf = 0, visible = true, ultimo = 0, listo = false;
+    var pts = new Array((N + 1) * (N + 1));
+    var NIVELES = 6, paths = [];
+    function medir() { w = canvas.width = Math.floor(canvas.offsetWidth * DPR); h = canvas.height = Math.floor(canvas.offsetHeight * DPR); }
+    function dibujar(ahora) {
+      raf = 0;
+      if (!visible || document.hidden) return;
+      if (ahora - ultimo < 33) { raf = requestAnimationFrame(dibujar); return; }
+      ultimo = ahora;
+      ctx.clearRect(0, 0, w, h);
+      t += 0.0055;
+      var cx = w * 0.62, cy = h * 0.74, escala = Math.min(w, h) * 0.7;
+      var c = Math.cos(t * 0.25), s = Math.sin(t * 0.25), i, j, k, p, q, nv;
+      for (j = 0; j <= N; j++) for (i = 0; i <= N; i++) {
+        var x = (i / N - 0.5) * 2, z = (j / N - 0.5) * 2;
+        var y = Math.sin((i + j) * 0.38 * (16 / N) + t * 3.2) * 0.16 + Math.cos(i * 0.32 * (16 / N) - t * 2.4) * 0.1;
+        var xr = x * c - z * s, zr = x * s + z * c, pr = 2.6 / (2.6 + zr);
+        pts[j * (N + 1) + i] = { sx: cx + xr * escala * pr, sy: cy - y * escala * pr - zr * escala * 0.14 * pr, d: pr };
+      }
+      for (k = 0; k < NIVELES * 2; k++) paths[k] = new Path2D();
+      for (j = 0; j <= N; j++) for (i = 0; i <= N; i++) {
+        k = j * (N + 1) + i; p = pts[k];
+        if (i < N) { q = pts[k + 1]; nv = Math.min(NIVELES - 1, Math.floor(Math.min(p.d, q.d) * NIVELES * 0.7)); paths[nv].moveTo(p.sx, p.sy); paths[nv].lineTo(q.sx, q.sy); }
+        if (j < N) { q = pts[k + N + 1]; nv = Math.min(NIVELES - 1, Math.floor(Math.min(p.d, q.d) * NIVELES * 0.7)); paths[NIVELES + nv].moveTo(p.sx, p.sy); paths[NIVELES + nv].lineTo(q.sx, q.sy); }
+      }
+      ctx.lineWidth = DPR;
+      for (k = 0; k < NIVELES; k++) {
+        var a = (k + 1) / NIVELES;
+        ctx.strokeStyle = 'rgba(25,184,255,' + (a * 0.42).toFixed(3) + ')'; ctx.stroke(paths[k]);
+        ctx.strokeStyle = 'rgba(114,215,255,' + (a * 0.28).toFixed(3) + ')'; ctx.stroke(paths[NIVELES + k]);
+      }
+      raf = requestAnimationFrame(dibujar);
+    }
+    function arrancar() { if (listo && !raf && visible && !document.hidden) raf = requestAnimationFrame(dibujar); }
+    medir();
+    if ('ResizeObserver' in window) new ResizeObserver(function () { medir(); arrancar(); }).observe(canvas);
+    document.addEventListener('visibilitychange', arrancar);
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { visible = es[0].isIntersecting; arrancar(); }, { threshold: 0.02 }).observe(canvas);
+    function empezar() { listo = true; arrancar(); }
+    function inicio() { if ('requestIdleCallback' in window) requestIdleCallback(empezar, { timeout: 1500 }); else setTimeout(empezar, 300); }
+    if (document.readyState === 'complete') inicio(); else addEventListener('load', inicio, { once: true });
+  })($('.hero__malla'));
+
+  // ---------- 5. El Selector en vivo ----------
 
   var contFichas = document.getElementById('selectorFichas');
+  var app = $('.app');
+  var cmdObj = $('[data-cmd-obj]'), cmdNeg = $('[data-cmd-neg]');
   var estado = { objetivo: 'vean', negocio: 'belleza' };
 
   function pintarSelector() {
     var ganchos = SELECTOR[estado.objetivo][estado.negocio];
+    if (cmdObj) teclear(cmdObj, '--objetivo ' + estado.objetivo, 350);
+    if (cmdNeg) teclear(cmdNeg, '--negocio ' + estado.negocio, 350);
+    if (app) app.style.setProperty('--obj-activo', 'var(--' + estado.objetivo + ')');
     contFichas.textContent = '';
-    ganchos.forEach(function (g) {
-      var ficha = crear('article', 'ficha es-nueva');
-      ficha.style.setProperty('--tinta', 'var(--' + estado.objetivo + ')');
-      ficha.appendChild(crear('span', 'ficha__pestana', OBJETIVOS[estado.objetivo]));
-      ficha.appendChild(crear('p', 'ficha__gancho', '«' + g[0] + '»'));
-      ficha.appendChild(dato('ficha__pantalla', 'En pantalla:', g[1]));
+    ganchos.forEach(function (g, n) {
+      var ficha = crear('article', 'gancho es-nueva');
+      ficha.style.setProperty('--obj', 'var(--' + estado.objetivo + ')');
+      ficha.appendChild(crear('span', 'gancho__tag', OBJETIVOS[estado.objetivo]));
+      var texto = crear('p', 'gancho__texto');
+      var visible = crear('span');
+      visible.setAttribute('aria-hidden', 'true');
+      texto.appendChild(crear('span', 'v-oculto', '«' + g[0] + '»'));
+      texto.appendChild(visible);
+      ficha.appendChild(texto);
+      ficha.appendChild(dato('gancho__pantalla', 'En pantalla:', g[1]));
       contFichas.appendChild(ficha);
+      setTimeout(function () { teclear(visible, '«' + g[0] + '»', 700); }, n * 160);
     });
   }
 
   function enlazarGrupo(selector, clave) {
-    var botones = document.querySelectorAll(selector);
+    var botones = $$(selector);
     botones.forEach(function (b) {
       b.addEventListener('click', function () {
         botones.forEach(function (o) { o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); });
@@ -169,43 +375,88 @@
     enlazarGrupo('.chip[data-negocio]', 'negocio');
   }
 
-  // ---------- 2. La baraja de los 10 gratis ----------
+  // ---------- 6. Las 35 categorías en movimiento ----------
+
+  $$('[data-carril]').forEach(function (pista) {
+    var mitad = pista.getAttribute('data-carril') === '0' ? CATEGORIAS.slice(0, 18) : CATEGORIAS.slice(18);
+    // dos copias seguidas para que el bucle no corte
+    mitad.concat(mitad).forEach(function (nombre) { pista.appendChild(crear('span', 'cat', nombre)); });
+  });
+
+  // ---------- 7. La baraja de los 10 gratis ----------
 
   var baraja = document.getElementById('baraja');
   var botonBaraja = document.getElementById('barajaSiguiente');
-  var cuenta = document.getElementById('barajaCuenta');
+  var cuentaBaraja = document.getElementById('barajaCuenta');
   var inicio = 0;
 
-  function pintarBaraja() {
+  function copiar(texto, boton) {
+    var hecho = function () {
+      boton.textContent = 'Copiado ✓'; boton.classList.add('ok');
+      setTimeout(function () { boton.textContent = 'Copiar'; boton.classList.remove('ok'); }, 1600);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(texto).then(hecho, function () {});
+    } else {
+      var area = crear('textarea'); area.value = texto; area.setAttribute('readonly', '');
+      area.style.position = 'fixed'; area.style.opacity = '0';
+      document.body.appendChild(area); area.select();
+      try { document.execCommand('copy'); hecho(); } catch (e) { /* sin portapapeles */ }
+      document.body.removeChild(area);
+    }
+  }
+
+  function botonCopiar(texto) {
+    var b = crear('button', 'copiar', 'Copiar');
+    b.type = 'button';
+    b.setAttribute('aria-label', 'Copiar la plantilla: ' + texto);
+    b.addEventListener('click', function () { copiar(texto, b); });
+    return b;
+  }
+
+  function pintarBaraja(animar) {
     baraja.textContent = '';
     var fin = Math.min(inicio + 3, GRATIS.length);
     for (var i = inicio; i < fin; i++) {
       var g = GRATIS[i];
-      var ficha = crear('article', 'ficha ficha--banco es-nueva');
-      ficha.appendChild(crear('span', 'ficha__pestana', g[0]));
-      ficha.appendChild(crear('p', 'ficha__gancho', '«' + g[1] + '»'));
-      ficha.appendChild(dato('ficha__dato', 'Ejemplo:', g[2]));
-      ficha.appendChild(dato('ficha__dato', 'Psicología:', g[3]));
+      var ficha = crear('article', 'gratis' + (animar ? ' es-nueva' : ''));
+      ficha.appendChild(crear('span', 'gratis__cat', g[0]));
+      ficha.appendChild(crear('p', 'gratis__plantilla', '«' + g[1] + '»'));
+      ficha.appendChild(dato('gratis__dato', 'Ejemplo:', g[2]));
+      ficha.appendChild(dato('gratis__dato', 'Psicología:', g[3]));
+      ficha.appendChild(botonCopiar(g[1]));
       baraja.appendChild(ficha);
     }
-    cuenta.textContent = (inicio + 1) + (fin - inicio > 1 ? '-' + fin : '') + ' / ' + GRATIS.length;
+    cuentaBaraja.textContent = (inicio + 1) + (fin - inicio > 1 ? '-' + fin : '') + ' / ' + GRATIS.length;
     botonBaraja.textContent = fin >= GRATIS.length ? 'Volver a las 3 primeras' : 'Saca otras 3 fichas';
   }
 
   if (baraja && botonBaraja) {
+    pintarBaraja(false);
     botonBaraja.addEventListener('click', function () {
       inicio = inicio + 3 >= GRATIS.length ? 0 : inicio + 3;
-      pintarBaraja();
+      pintarBaraja(true);
     });
   }
 
-  // ---------- 3. Medición (píxel de Hook Vault) ----------
+  // ---------- 8. Días que quedan para los regalos ----------
+
+  (function () {
+    var caja = $('[data-quedan]'); if (!caja) return;
+    var fin = new Date(2027, 0, 1, 0, 0, 0); // termina al acabar el 31-12-2026 (hora del visitante)
+    var dias = Math.ceil((fin - new Date()) / 86400000);
+    if (dias <= 0) return;
+    caja.querySelector('span').textContent = dias === 1 ? 'Hoy es el último día de los regalos' : 'Quedan ' + dias + ' días para los regalos';
+    caja.hidden = false;
+  })();
+
+  // ---------- 9. Medición (píxel de Hook Vault) ----------
 
   function rastrear(evento, datos, opciones) {
     if (typeof window.fbq === 'function') window.fbq('track', evento, datos || {}, opciones || {});
   }
 
-  document.querySelectorAll('a.lemonsqueezy-button').forEach(function (a) {
+  $$('a.lemonsqueezy-button').forEach(function (a) {
     a.addEventListener('click', function () {
       rastrear('InitiateCheckout', { content_name: 'Hook Vault', value: 19.99, currency: 'USD' });
     });
