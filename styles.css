@@ -326,6 +326,16 @@ html.js [data-embudo].in .pasos-terminal li:nth-child(4) { transition-delay: 1.0
 .copiar { position: absolute; top: 12px; right: 12px; min-height: 32px; padding: 6px 11px; border-radius: 999px; border: 1px solid var(--line2); background: transparent; color: var(--text2); font: 500 11px/1 var(--fm); cursor: pointer; transition: color .2s, border-color .2s; }
 .copiar:hover { color: var(--cyan); border-color: var(--cyan); }
 .copiar.ok { color: var(--verde); border-color: var(--verde); }
+.gratis { border-top: 3px solid var(--obj, var(--cyan)); }
+.gratis .gratis__cat { color: var(--obj, var(--cyan)); }
+.gratis__pantalla { margin: 0 0 10px; padding: 9px 11px; border-radius: 10px; background: var(--negro); border: 1px solid var(--line2); font: 700 14.5px/1.35 var(--fd); color: var(--soft); }
+.gratis__pantalla span { display: block; margin-bottom: 5px; font: 700 10px/1 var(--fm); color: var(--mute); text-transform: uppercase; letter-spacing: .08em; }
+.gratis__ejemplos { margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--line2); }
+.gratis__ejemplos > span { display: block; margin-bottom: 6px; font: 700 11px/1 var(--fm); color: var(--mute); text-transform: uppercase; letter-spacing: .06em; }
+.gratis__ejemplos p { margin: 0 0 6px; font-size: 14px; color: var(--text2); }
+.gratis__ejemplos b { color: var(--soft); font-weight: 600; }
+.gancho__sin { margin-left: 8px; font: 600 10px/1 var(--fm); color: var(--mute); text-transform: uppercase; letter-spacing: .06em; }
+
 .baraja__control { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 26px; }
 .baraja__cuenta { font: 400 12px/1 var(--fm); color: var(--mute); }
 

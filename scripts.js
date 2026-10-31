@@ -24,116 +24,500 @@
     compren: 'Que te compren'
   };
 
-  // Ganchos adaptados de plantillas del Banco. [dice, en pantalla]
+  // El Selector real (selector_negocios.csv): 4 de los 12 negocios, 3 ganchos por objetivo. [dice, en pantalla, sin salir a cámara]
   var SELECTOR = {
-    vean: {
-      belleza: [
-        ['El error número uno que hace que tu tinte dure la mitad.', 'Tu tinte dura la mitad por esto'],
-        ['Nadie te cuenta esto antes de cortarte el fleco.', 'Antes de cortarte el fleco…'],
-        ['Llevas años lavándote el cabello mal. Te explico por qué.', 'Te lavas el cabello mal (y no lo sabes)']
+    "vean": {
+      "belleza": [
+        [
+          "Nadie viene por un corte; viene a salir sintiéndose otra persona.",
+          "No es un corte, es cómo sales",
+          true
+        ],
+        [
+          "Los clientes que piden «solo las puntitas» me hacen reír.",
+          "Cuando piden solo las puntitas",
+          false
+        ],
+        [
+          "Si te vas a decolorar en casa, estás a un paso del desastre.",
+          "Decolorar en casa: un paso del desastre",
+          true
+        ]
       ],
-      impuestos: [
-        ['Tu reembolso no es pequeño por mala suerte. Es por esto.', '¿Reembolso pequeño? Esta es la razón'],
-        ['Casi nadie revisa esto antes de declarar, y eso les cuesta dinero.', 'Revisa esto antes de declarar'],
-        ['La forma más rápida de que el IRS te mande una carta.', 'Así te llega una carta del IRS']
+      "impuestos": [
+        [
+          "Declarar con el primo que sabe de impuestos se siente seguro, pero es peligroso.",
+          "¿Quién te prepara los impuestos?",
+          true
+        ],
+        [
+          "Después de [años] años preparando impuestos, esto es lo que nadie te cuenta.",
+          "[años] años preparando impuestos",
+          false
+        ],
+        [
+          "No tienes un problema de impuestos, tienes un problema de recibos.",
+          "Tu problema no son los impuestos",
+          true
+        ]
       ],
-      casas: [
-        ['El error número uno al buscar tu primera casa.', 'Error #1 al comprar tu primera casa'],
-        ['Esta casa tiene un detalle que casi nadie ve en la visita.', '¿Lo ves? Casi nadie lo ve'],
-        ['Si rentas, mira esto antes de firmar otro año.', 'Antes de renovar tu contrato…']
+      "casas": [
+        [
+          "Todo el que renta conoce este dolor: pagar cada mes y nada es tuyo.",
+          "Pagas cada mes y nada es tuyo",
+          true
+        ],
+        [
+          "Mis clientes me repiten la misma frase antes de comprar su primera casa…",
+          "La frase que todos me dicen",
+          true
+        ],
+        [
+          "Creer que necesitas un pago inicial enorme para comprar casa es un mito.",
+          "El mito del pago inicial",
+          true
+        ]
       ],
-      comida: [
-        ['La razón por la que tu salsa no sabe como la de tu abuela.', 'Por esto tu salsa no sabe igual'],
-        ['Esto es lo que pasa en la cocina 10 minutos antes de abrir.', '10 minutos antes de abrir…'],
-        ['Esto no te lo cuenta nadie: así hacemos las tortillas aquí.', 'Así hacemos las tortillas']
+      "comida": [
+        [
+          "Si un viernes a mediodía en esta cocina no es caos, ¿qué es?",
+          "Viernes a mediodía en la cocina",
+          true
+        ],
+        [
+          "POV: llega un pedido de [número] tacos justo cuando íbamos a cerrar.",
+          "La lucha es real",
+          true
+        ],
+        [
+          "El mayor mito de la comida mexicana es que todo tiene que picar.",
+          "No, no todo pica",
+          true
+        ]
       ]
     },
-    guarden: {
-      belleza: [
-        ['3 cosas que tienes que hacer después del tinte para que dure.', 'Guárdalo para tu próximo tinte'],
-        ['Si tu cabello se esponja con la humedad, haz esto.', 'Cabello esponjado: haz esto'],
-        ['La forma fácil de que tu fade se vea limpio dos semanas.', 'Fade limpio 2 semanas']
+    "guarden": {
+      "belleza": [
+        [
+          "Esta es la verdadera razón de que tu rubio se ponga anaranjado.",
+          "Por qué tu rubio se pone naranja",
+          false
+        ],
+        [
+          "Lo que necesitas saber antes de decolorarte el pelo.",
+          "Antes de decolorarte, mira esto",
+          true
+        ],
+        [
+          "Esto es lo único que necesitas saber sobre el champú morado.",
+          "Champú morado: lo único que importa",
+          true
+        ]
       ],
-      impuestos: [
-        ['Guarda este video: los 5 papeles que necesitas para declarar.', '5 papeles para declarar'],
-        ['Si trabajas por tu cuenta, haz esto cada mes para no sufrir en abril.', '¿Trabajas por tu cuenta? Haz esto'],
-        ['Arregla tu desorden de recibos en 3 pasos.', 'Recibos en orden: 3 pasos']
+      "impuestos": [
+        [
+          "Si te cansaste de buscar recibos a última hora, prueba esto desde hoy.",
+          "Adiós a buscar recibos en abril",
+          true
+        ],
+        [
+          "Este es el consejo de impuestos que le doy a mi propia familia.",
+          "Lo que le digo a mi familia",
+          false
+        ],
+        [
+          "Te dejo una guía fácil de qué papeles traer a tu cita de impuestos.",
+          "Qué papeles traer a tu cita",
+          true
+        ]
       ],
-      casas: [
-        ['Las 4 preguntas que tienes que hacer en cualquier visita a una casa.', '4 preguntas en cada visita'],
-        ['Cómo saber cuánto puedes pagar por una casa, en 3 pasos.', '¿Cuánto puedes pagar por una casa?'],
-        ['Si te negaron el préstamo, esto es lo primero que tienes que revisar.', '¿Te negaron el préstamo? Revisa esto']
+      "casas": [
+        [
+          "Si estás pensando en comprar tu primera casa, mira esto primero.",
+          "Antes de comprar tu primera casa",
+          true
+        ],
+        [
+          "Comparé rentar y comprar en [ciudad] para que tú no tengas que hacerlo.",
+          "Rentar o comprar en [ciudad]",
+          true
+        ],
+        [
+          "Cómo preparar tu casa para venderla en 3 pasos simples.",
+          "Lista para vender en 3 pasos",
+          true
+        ]
       ],
-      comida: [
-        ['El truco para que el arroz no se pegue no es lo que crees.', 'Arroz que no se pega'],
-        ['Guarda esta receta: la salsa verde de la casa en 5 minutos.', 'Salsa verde en 5 minutos'],
-        ['Cómo recalentar tacos sin que queden duros.', 'Tacos recalentados como recién hechos']
+      "comida": [
+        [
+          "Si has intentado hacer tortillas en casa y se te rompen, es por esto.",
+          "Tortillas que no se rompen",
+          true
+        ],
+        [
+          "Por esto tu salsa casera no sabe como la de la taquería.",
+          "El secreto está en el comal",
+          true
+        ],
+        [
+          "Guía a prueba de errores para calcular cuántos tacos pedir para tu fiesta.",
+          "¿Cuántos tacos por invitado?",
+          true
+        ]
       ]
     },
-    escriban: {
-      belleza: [
-        ['Escríbeme “FOTO” y te digo qué corte le queda a tu cara.', 'Escríbeme FOTO'],
-        ['¿Te pintas el cabello en casa? Cuéntame qué tinte usas y te digo si te conviene.', '¿Qué tinte usas?'],
-        ['Si tu barba crece dispareja, no es tu culpa. Mándame una foto y te digo qué hacer.', '¿Barba dispareja?']
+    "escriban": {
+      "belleza": [
+        [
+          "Si el precio no importara, ¿qué te harías en el pelo mañana mismo?",
+          "Sin pensar en precio, ¿qué te harías?",
+          true
+        ],
+        [
+          "Sé honesto: tú también te has cortado el fleco en casa, ¿verdad?",
+          "¿Tú también te cortaste el fleco?",
+          false
+        ],
+        [
+          "¿Por qué los tutoriales dicen «diez minutos» y el peinado te toma una hora?",
+          "Tutorial: 10 minutos. Tú: una hora",
+          true
+        ]
       ],
-      impuestos: [
-        ['¿Te llegó una carta del IRS y no la entiendes? Escríbeme “CARTA”.', '¿Carta del IRS? Escribe CARTA'],
-        ['Cuéntame en los comentarios cuánto tiempo llevas sin declarar. Nadie te va a juzgar.', '¿Cuánto llevas sin declarar?'],
-        ['Si no sabes si te conviene una LLC o seguir por tu cuenta, escríbeme y lo vemos.', '¿LLC o por tu cuenta?']
+      "impuestos": [
+        [
+          "Te están mintiendo con eso de que a todos les toca reembolso grande; escríbeme DUDA.",
+          "¿Reembolso grande para todos? No",
+          false
+        ],
+        [
+          "El mito de que con ITIN no se puede declarar hace daño, ¿tú lo creías?",
+          "Con ITIN sí se declara",
+          true
+        ],
+        [
+          "¿Tú también tienes recibos regados en la guantera o soy solo yo?",
+          "¿Recibos en la guantera?",
+          true
+        ]
       ],
-      casas: [
-        ['Escríbeme tu código postal y te digo cómo se están moviendo los precios en tu zona.', 'Escribe tu código postal'],
-        ['¿Rentas y crees que nunca vas a poder comprar? Cuéntame tu caso.', '¿Crees que nunca podrás comprar?'],
-        ['Si te dijeron que necesitas un 20 % de pago inicial, espera. Escríbeme “CASA”.', '¿20 % de pago inicial? Escribe CASA']
+      "casas": [
+        [
+          "Dime en los comentarios qué te impide comprar tu casa ahora mismo.",
+          "¿Qué te impide comprar casa?",
+          true
+        ],
+        [
+          "Como agente de bienes raíces, esta es mi opinión sobre rentar toda la vida.",
+          "Rentar toda la vida: ¿qué opinas?",
+          false
+        ],
+        [
+          "¿Solo a ti te pasa o la casa que te gusta siempre se vende primero?",
+          "¿También te pasa? Cuéntame abajo",
+          false
+        ]
       ],
-      comida: [
-        ['¿Qué platillo quieres que agreguemos al menú? Te leo en los comentarios.', 'Tú eliges el próximo platillo'],
-        ['Escríbeme “MENÚ” y te mando las opciones para tu fiesta.', '¿Fiesta? Escribe MENÚ'],
-        ['Dime en los comentarios con qué acompañas los tamales. Hay debate.', '¿Con qué los acompañas?']
+      "comida": [
+        [
+          "Resolvamos este debate de una vez por todas: ¿salsa verde o roja?",
+          "¿Verde o roja? Vota abajo",
+          false
+        ],
+        [
+          "Dime que eres fan de los tacos sin decirme que eres fan de los tacos.",
+          "Te leo en los comentarios",
+          true
+        ],
+        [
+          "No mientas, tú también te comiste el pan dulce en el carro.",
+          "Confiesa en los comentarios",
+          false
+        ]
       ]
     },
-    compren: {
-      belleza: [
-        ['Así llegó su cabello. Así salió.', 'Antes y después de hoy'],
-        ['Si te dijeron que el balayage no es para cabello oscuro, mira esto.', 'Balayage en cabello oscuro'],
-        ['La gente no paga un corte. Paga por salir sintiéndose otra persona.', 'Agenda tu cita: enlace en el perfil']
+    "compren": {
+      "belleza": [
+        [
+          "Arreglar un tinte que salió mal es más fácil de lo que crees.",
+          "¿Tinte que salió mal? Tiene arreglo",
+          true
+        ],
+        [
+          "Cuando mis clientas salen de aquí y empiezan a presumir su pelo…",
+          "Cuando salen presumiendo su pelo",
+          true
+        ],
+        [
+          "No te duermas: me quedan [número] citas para este sábado.",
+          "Quedan [número] citas este sábado",
+          true
+        ]
       ],
-      impuestos: [
-        ['Lo que cuesta hacer tus impuestos con nosotros, explicado en 30 segundos.', 'Precio claro, sin sorpresas'],
-        ['Cuando dices «lo hago yo y ya», esto es lo que te puede costar.', '¿Lo haces tú solo? Mira esto'],
-        ['¿Qué pasa si sigues sin declarar? Te lo explico antes de que sea tarde.', '¿Y si no declaras?']
+      "impuestos": [
+        [
+          "La fecha límite del IRS no se mueve, ¿y tú cuándo te mueves?",
+          "Aparta tu cita antes del [fecha]",
+          true
+        ],
+        [
+          "Esperar a abril no hace tus impuestos más fáciles, solo más apurados.",
+          "Esperar no lo hace más fácil",
+          true
+        ],
+        [
+          "No me lo creas a mí, mira lo que me escribió [nombre] después de declarar.",
+          "Lo dice [nombre], no yo",
+          true
+        ]
       ],
-      casas: [
-        ['Esta casa sale al mercado esta semana. Te la enseño antes que nadie.', 'Nueva esta semana: mírala primero'],
-        ['¿Y si pagas de renta casi lo mismo que pagarías de hipoteca? Hagamos la cuenta.', 'Renta o hipoteca: la cuenta'],
-        ['Nunca compres una casa por las fotos. Cómprala por esto.', 'Lo que no sale en las fotos']
+      "casas": [
+        [
+          "Si crees que ya se te pasó el tiempo de comprar casa, puede que no.",
+          "¿Ya es tarde para comprar?",
+          false
+        ],
+        [
+          "Si tu renta sube cada año, no tienes por qué vivir con eso.",
+          "¿Tu renta sube cada año?",
+          true
+        ],
+        [
+          "Si quieres tener tus propias llaves en la mano, empieza aquí.",
+          "Tus propias llaves empiezan aquí",
+          true
+        ]
       ],
-      comida: [
-        ['Este es el plato que más piden los viernes. Y hoy es viernes.', 'El favorito de los viernes'],
-        ['Si nunca has probado la birria, empieza por aquí.', 'Tu primera birria, aquí'],
-        ['Cuánto cuesta dar de comer a 20 personas con nosotros, en 30 segundos.', 'Fiesta para 20: el precio']
+      "comida": [
+        [
+          "El [platillo de temporada] no vuelve hasta el año que viene.",
+          "Solo por temporada",
+          true
+        ],
+        [
+          "El platillo que no puedo dejar de comer, y eso que lo cocino yo.",
+          "Mi favorito: [platillo]",
+          false
+        ],
+        [
+          "Pero no tengo tiempo de cocinar para la fiesta…",
+          "Tú celebras, nosotros cocinamos",
+          true
+        ]
       ]
     }
   };
 
-  // Los 10 gratis: texto exacto del Banco. [categoría, plantilla, ejemplo, psicología]
+  // Los 10 gratis (tarea 4.1): fichas de «Los 100 ganchos listos para grabar»
   var GRATIS = [
-    ['Problema-Solución', 'No tienes problema de [X] — tienes problema de [causa real].', 'No tienes problema de contenido — tienes problema de mensaje.', 'Reencuadre de dolor.'],
-    ['Problema-Solución', 'El error #1 que te mantiene en [problema].', 'El error #1 que te mantiene con bajo ingreso es cobrar barato.', 'Claridad de un solo error.'],
-    ['Ventas y Persuasión', 'Tu precio no es muy alto, tu valor no es claro.', 'El mismo reloj de $1.000 parece barato si “salva vidas” vs “da la hora”.', 'Reencuadre valor vs coste.'],
-    ['Problema-Solución', 'Si [síntoma], este es tu problema real.', 'Si tus posts reciben likes pero no comentarios, este es el real.', 'Síntoma → causa.'],
-    ['Problema-Solución', 'Tu [problema] no es tu culpa — por esto.', 'Tus bajas vistas no son tu culpa — es el algoritmo.', 'Quita culpa → confianza.'],
-    ['Ventas y Persuasión', 'Cuando la gente dice “me lo pienso”, están diciendo “aún no confío”.', 'Arregla la confianza, no presiones más.', 'Déficit de confianza.'],
-    ['Problema-Solución', 'No necesitas [cosa asumida] para [meta].', 'No necesitas cámaras fancy para crear contenido.', 'Rompe expectativa — baja barreras.'],
-    ['Problema-Solución', 'Si tuviera que empezar de cero, así arreglaría [problema].', 'Si tuviera que empezar de cero, así arreglaría las bajas ventas.', 'Autoridad por retrospectiva.'],
-    ['Ventas y Persuasión', 'La gente no compra cuando te entiende. Compra cuando se siente entendida.', 'Un coach fitness vende más diciendo “sé cómo se siente estar estancado” que “mi programa tiene 50 entrenamientos”.', 'Disparador de empatía.'],
-    ['Problema-Solución', 'El truco para resolver [problema] no es lo que crees.', 'El truco para resolver el bajo alcance no es más contenido — son mejores hooks.', 'Rompe expectativas.']
+    {
+      "n": "008",
+      "obj": "vean",
+      "sin": true,
+      "dices": "No es tu culpa que [tu problema]. Te explico por qué.",
+      "pantalla": "No es tu culpa",
+      "toma": "Debajo del texto, primero el problema tal como se ve (una mano peinando un pelo esponjado frente al espejo, un celular lleno de avisos) y luego un primer plano de lo que de verdad lo causa, como la plancha demasiado caliente o las notificaciones.",
+      "porque": "Quitarle la culpa a alguien lo alivia y lo pone de tu lado antes de que digas nada más.",
+      "ej": [
+        [
+          "Salón de belleza",
+          "No es tu culpa que tu pelo se esponje. Te explico por qué."
+        ],
+        [
+          "Coach",
+          "No es tu culpa que no te alcance el tiempo. Te explico por qué."
+        ]
+      ]
+    },
+    {
+      "n": "010",
+      "obj": "vean",
+      "sin": true,
+      "dices": "POV: crees que [tu servicio] es fácil… hasta que lo intentas.",
+      "pantalla": "Parecía fácil en YouTube",
+      "toma": "Debajo del texto, un intento casero que sale mal a propósito (un fleco chueco, unos tamales desbaratados) y al final el resultado bien hecho por ti.",
+      "porque": "Todos hemos querido hacerlo solos y nos salió mal; reírse de eso une y de paso muestra por qué vale la pena tu trabajo.",
+      "ej": [
+        [
+          "Salón de belleza",
+          "POV: crees que cortarte el fleco es fácil… hasta que lo intentas."
+        ],
+        [
+          "Comida",
+          "POV: crees que hacer tamales es fácil… hasta que lo intentas."
+        ]
+      ]
+    },
+    {
+      "n": "013",
+      "obj": "vean",
+      "sin": true,
+      "dices": "La pregunta que le hago a cada [cliente] el primer día.",
+      "pantalla": "Siempre pregunto esto primero",
+      "toma": "Debajo del texto, la pregunta escrita a mano en una libreta o en tu hoja de registro, con un acercamiento lento palabra por palabra.",
+      "porque": "Todos quieren saber cómo piensa un profesional por dentro, y una pregunta concreta hace que quien mira se la conteste a sí mismo.",
+      "ej": [
+        [
+          "Entrenador personal",
+          "La pregunta que le hago a cada alumno el primer día de entrenamiento."
+        ],
+        [
+          "Abogados",
+          "La pregunta que le hago a cada cliente en la primera consulta."
+        ]
+      ]
+    },
+    {
+      "n": "026",
+      "obj": "guarden",
+      "sin": false,
+      "dices": "Ojalá alguien me hubiera dicho esto antes de [comprar lo que vendes].",
+      "pantalla": "Lo que nadie te avisa",
+      "toma": "Grábate de cerca, como en una videollamada, y al decir «esto» acércate un poco más a la cámara, como quien cuenta un secreto.",
+      "porque": "Hablas como alguien que estuvo en el lugar de tu cliente, y a nadie le gusta enterarse tarde de lo que pudo saber antes.",
+      "ej": [
+        [
+          "Bienes raíces",
+          "Ojalá alguien me hubiera dicho esto antes de comprar mi primera casa."
+        ],
+        [
+          "Autos",
+          "Ojalá alguien me hubiera dicho esto antes de financiar mi primer carro."
+        ]
+      ]
+    },
+    {
+      "n": "048",
+      "obj": "guarden",
+      "sin": false,
+      "dices": "¿Vas a contratar a un [profesional]? Empieza por hacerle estas preguntas.",
+      "pantalla": "Pregúntale esto antes de contratar",
+      "toma": "Cuenta con los dedos frente a la cámara al decir «estas preguntas», como si ya fueras a enumerarlas una por una.",
+      "porque": "Le das al cliente una lista para no dejarse engañar, y la guarda hasta el día que tenga que contratar.",
+      "ej": [
+        [
+          "Remodelación",
+          "¿Vas a contratar a un contratista? Empieza por hacerle estas preguntas."
+        ],
+        [
+          "Abogados",
+          "¿Vas a contratar a un abogado de inmigración? Empieza por hacerle estas preguntas."
+        ]
+      ]
+    },
+    {
+      "n": "051",
+      "obj": "escriban",
+      "sin": true,
+      "dices": "Dime si te suena: «la otra semana voy» y llevas meses sin [tu servicio].",
+      "pantalla": "¿Te suena? Dímelo abajo",
+      "toma": "Debajo del texto: graba la pantalla del celular posponiendo un recordatorio varias veces y corta a tu local listo, con todo preparado para atender.",
+      "porque": "Todos tenemos esa excusa, y al reconocerla la gente contesta que a ella le pasa igual.",
+      "ej": [
+        [
+          "Consultorio médico",
+          "Dime si te suena: «la otra semana voy» y llevas meses sin hacerte un chequeo."
+        ],
+        [
+          "Taller de autos",
+          "Dime si te suena: «la otra semana voy» y llevas meses sin cambiar el aceite."
+        ]
+      ]
+    },
+    {
+      "n": "075",
+      "obj": "escriban",
+      "sin": true,
+      "dices": "¿Cuánto tiempo crees que nos tomó [este trabajo]? Escribe tu apuesta en los comentarios.",
+      "pantalla": "Adivina cuánto tiempo nos tomó",
+      "toma": "Debajo del texto: el antes y el después con un corte rápido o en pantalla dividida, sin mostrar cuánto tardaste, y deja la respuesta para fijarla después en los comentarios.",
+      "porque": "Adivinar es un juego y todos quieren acertar, así que dejan su apuesta para ver si ganaron.",
+      "ej": [
+        [
+          "Entrenador personal",
+          "¿Cuánto tiempo crees que nos tomó lograr esta sentadilla? Escribe tu apuesta en los comentarios."
+        ],
+        [
+          "Remodelación",
+          "¿Cuánto tiempo crees que nos tomó esta cocina? Escribe tu apuesta en los comentarios."
+        ]
+      ]
+    },
+    {
+      "n": "078",
+      "obj": "compren",
+      "sin": true,
+      "dices": "Aquí el antes y después de [este trabajo]. Fíjate en [el detalle].",
+      "pantalla": "Antes y después: [tu servicio]",
+      "toma": "Foto o video del antes a pantalla completa, corte seco al después tomado desde el mismo ángulo y, al final, un acercamiento lento al detalle.",
+      "porque": "Ver el cambio con tus propios ojos convence más que cualquier explicación.",
+      "ej": [
+        [
+          "Barbería",
+          "Aquí el antes y después de este desvanecido. Fíjate en la línea de la nuca."
+        ],
+        [
+          "Remodelación",
+          "Aquí el antes y después de este baño. Fíjate en las juntas del azulejo."
+        ]
+      ]
+    },
+    {
+      "n": "082",
+      "obj": "compren",
+      "sin": true,
+      "dices": "[Tu servicio] no es un lujo. Es mantenimiento.",
+      "pantalla": "No es un lujo. Es mantenimiento.",
+      "toma": "Tomas cortas y limpias del servicio en marcha (manos trabajando, herramientas, detalles) y, al final, la persona saliendo lista para su día.",
+      "porque": "Quita la culpa de gastar en uno mismo y lo convierte en cuidar algo que ya tienes.",
+      "ej": [
+        [
+          "Clínica dental",
+          "Tu limpieza dental no es un lujo. Es mantenimiento."
+        ],
+        [
+          "Entrenador personal",
+          "Entrenar con alguien que te corrija no es un lujo. Es mantenimiento."
+        ]
+      ]
+    },
+    {
+      "n": "079",
+      "obj": "compren",
+      "sin": false,
+      "dices": "Ese [detalle pequeño] que ignoras hoy se vuelve [problema grande] mañana.",
+      "pantalla": "Pequeño hoy, caro mañana",
+      "toma": "Acerca el celular al detalle (la grieta, la pieza gastada, la carta sin abrir) y señálalo con el dedo mientras lo dices.",
+      "porque": "Ver un problema chico que tú también tienes da ganas de resolverlo antes de que crezca.",
+      "ej": [
+        [
+          "Taller mecánico",
+          "Ese ruidito al frenar que ignoras hoy se vuelve un arreglo caro mañana."
+        ],
+        [
+          "Preparador de impuestos",
+          "Esa carta del IRS que ignoras hoy se vuelve un problema grande mañana."
+        ]
+      ]
+    }
   ];
 
   var HERO = [
-    ['vean', 'Que te vean · Impuestos', 'Tu reembolso no es pequeño por mala suerte. Es por esto.'],
-    ['escriban', 'Que te escriban · Belleza', 'Escríbeme “FOTO” y te digo qué corte le queda a tu cara.'],
-    ['compren', 'Que te compren · Comida', 'Este es el plato que más piden los viernes. Y hoy es viernes.']
+    [
+      "vean",
+      "Que te vean · Impuestos",
+      "No tienes un problema de impuestos, tienes un problema de recibos."
+    ],
+    [
+      "escriban",
+      "Que te escriban · Comida",
+      "Resolvamos este debate de una vez por todas: ¿salsa verde o roja?"
+    ],
+    [
+      "compren",
+      "Que te compren · Bienes raíces",
+      "Si tu renta sube cada año, no tienes por qué vivir con eso."
+    ]
   ];
 
   var CATEGORIAS = [
@@ -164,6 +548,9 @@
     p.appendChild(document.createTextNode(' ' + texto));
     return p;
   }
+
+  // «…» por fuera y “…” por dentro, como pide la ortografía
+  function comillas(texto) { return '«' + texto.replace(/«/g, '“').replace(/»/g, '”') + '»'; }
 
   // Escribe un texto letra a letra; se cancela si llega otra orden para el mismo elemento
   function teclear(el, texto, ms, alTerminar) {
@@ -347,15 +734,16 @@
       var ficha = crear('article', 'gancho es-nueva');
       ficha.style.setProperty('--obj', 'var(--' + estado.objetivo + ')');
       ficha.appendChild(crear('span', 'gancho__tag', OBJETIVOS[estado.objetivo]));
+      if (g[2]) ficha.appendChild(crear('span', 'gancho__sin', 'Sin salir a cámara'));
       var texto = crear('p', 'gancho__texto');
       var visible = crear('span');
       visible.setAttribute('aria-hidden', 'true');
-      texto.appendChild(crear('span', 'v-oculto', '«' + g[0] + '»'));
+      texto.appendChild(crear('span', 'v-oculto', comillas(g[0])));
       texto.appendChild(visible);
       ficha.appendChild(texto);
       ficha.appendChild(dato('gancho__pantalla', 'En pantalla:', g[1]));
       contFichas.appendChild(ficha);
-      setTimeout(function () { teclear(visible, '«' + g[0] + '»', 700); }, n * 160);
+      setTimeout(function () { teclear(visible, comillas(g[0]), 700); }, n * 160);
     });
   }
 
@@ -420,11 +808,17 @@
     for (var i = inicio; i < fin; i++) {
       var g = GRATIS[i];
       var ficha = crear('article', 'gratis' + (animar ? ' es-nueva' : ''));
-      ficha.appendChild(crear('span', 'gratis__cat', g[0]));
-      ficha.appendChild(crear('p', 'gratis__plantilla', '«' + g[1] + '»'));
-      ficha.appendChild(dato('gratis__dato', 'Ejemplo:', g[2]));
-      ficha.appendChild(dato('gratis__dato', 'Psicología:', g[3]));
-      ficha.appendChild(botonCopiar(g[1]));
+      ficha.style.setProperty('--obj', 'var(--' + g.obj + ')');
+      ficha.appendChild(crear('span', 'gratis__cat', 'Nº ' + g.n + ' · ' + OBJETIVOS[g.obj] + (g.sin ? ' · Sin salir a cámara' : '')));
+      ficha.appendChild(crear('p', 'gratis__plantilla', comillas(g.dices)));
+      ficha.appendChild(dato('gratis__pantalla', 'En pantalla:', g.pantalla));
+      ficha.appendChild(dato('gratis__dato', 'En la toma:', g.toma));
+      ficha.appendChild(dato('gratis__dato', 'Por qué funciona:', g.porque));
+      var ejemplos = crear('div', 'gratis__ejemplos');
+      ejemplos.appendChild(crear('span', '', 'Así queda en un negocio:'));
+      g.ej.forEach(function (x) { var linea = crear('p'); linea.appendChild(crear('b', '', x[0] + ':')); linea.appendChild(document.createTextNode(' ' + x[1])); ejemplos.appendChild(linea); });
+      ficha.appendChild(ejemplos);
+      ficha.appendChild(botonCopiar(g.dices));
       baraja.appendChild(ficha);
     }
     cuentaBaraja.textContent = (inicio + 1) + (fin - inicio > 1 ? '-' + fin : '') + ' / ' + GRATIS.length;
@@ -443,7 +837,7 @@
 
   (function () {
     var caja = $('[data-quedan]'); if (!caja) return;
-    var fin = new Date(2027, 0, 1, 0, 0, 0); // termina al acabar el 31-12-2026 (hora del visitante)
+    var fin = new Date(Date.UTC(2027, 0, 1, 5, 0, 0)); // 31-12-2026 a las 23:59, hora del Este de EE. UU. (Términos §4)
     var dias = Math.ceil((fin - new Date()) / 86400000);
     if (dias <= 0) return;
     caja.querySelector('span').textContent = dias === 1 ? 'Hoy es el último día de los regalos' : 'Quedan ' + dias + ' días para los regalos';
