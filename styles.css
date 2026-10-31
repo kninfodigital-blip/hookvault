@@ -367,6 +367,11 @@ html.js [data-embudo].in .pasos-terminal li:nth-child(4) { transition-delay: 1.0
 .pagos span { padding: 5px 8px; border-radius: 6px; border: 1px solid var(--line2); font: 700 10.5px/1 var(--fm); letter-spacing: .04em; color: var(--text2); }
 .plan__micro { margin-top: 12px; font-size: 13px; color: var(--mute); text-align: center; }
 
+.aviso-compra { max-width: 540px; margin: 12px auto 0; font-size: 12.5px; line-height: 1.5; color: var(--mute); text-align: center; }
+.aviso-compra a { color: var(--cyan); }
+.cierre .aviso-compra { color: var(--navy); opacity: .8; }
+.cierre .aviso-compra a { color: var(--navy); }
+
 /* ---------- 14. Preguntas ---------- */
 .faq { border-top: 1px solid var(--line); }
 .faq details { border-bottom: 1px solid var(--line); }
